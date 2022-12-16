@@ -1,9 +1,17 @@
 #!/bin/bash
+
+# install nodejs
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install nodejs -y 
 
-yum install git -y 
+# install git
+sudo yum install git -y 
 git clone https://github.com/ChaitanyaChandra/DevOps.git
+
+# run nodejs application
 cd DevOps\0.APPLICATIONS\spec\
-npm  install
-node index.js & 
+sudo npm  install
+sudo node index.js & 
+
+# run the script 
+# curl -sL https://raw.githubusercontent.com/ChaitanyaChandra/DevOps/main/0.APPLICATIONS/run.sh | sudo bash - 
