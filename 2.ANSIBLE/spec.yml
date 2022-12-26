@@ -2,9 +2,9 @@
  - name: nginx reverse proxy setup for nodejs
    hosts: localhost
    vars:
-      - COMPONENT: nodejs
-      - SERVICE: nodejs-internal #  nodejs-internal-dev.chaitu.org:8080
-      - ENV: dev
-      - DOMAIN: chaitu.org
+    - COMPONENT: backend-nodejs
+    - SERVICE: nodejs-internal #  nodejs-internal-dev.chaitu.org:8080
+    - ENV: dev
+    - DOMAIN: chaitu.org
     become: yes
-    roles: "{{ component }}"
+    roles: "{{ COMPONENT }}"
