@@ -4,5 +4,4 @@
   vars:
     - COMPONENT: backend-nodejs
   become: yes
-  roles:
-    - "{{COMPONENT}}"
+  roles: "{{COMPONENT}}"
