@@ -3,8 +3,6 @@
   hosts: localhost
   vars:
     - COMPONENT: backend-nodejs
-    - SERVICE: nodejs-internal #  nodejs-internal-dev.chaitu.org:8080
-    - ENV: dev
-    - DOMAIN: chaitu.org
   become: yes
-  roles: "{{ COMPONENT }}"
+  roles:
+    - "{{ COMPONENT }}"
