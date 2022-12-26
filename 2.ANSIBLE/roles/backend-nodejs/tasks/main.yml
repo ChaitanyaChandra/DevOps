@@ -1,5 +1,5 @@
 - name: Setup NodeJs repo
-  ansible.builtin.shell: curl –sL https://rpm.nodesource.com/setup_lts.x | bash
+  ansible.builtin.shell: sudo curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 
 - name: Install NodeJS dependencies 
   ansible.builtin.yum:
