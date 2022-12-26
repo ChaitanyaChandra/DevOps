@@ -5,6 +5,8 @@
 - name: Install NodeJS Service
   ansible.builtin.yum:
     name:
+      - gcc-c++ 
+      - make
       - nodejs
     state: installed
 
