@@ -53,13 +53,13 @@
 
     ```
     - hosts: DATABASES
-    tasks:
+      tasks:
         - ansible.builtin.debug:
-            msg: "Hello World"
+          msg: "Hello World"
 
     - name: Play 2
-    hosts: APPLICATION
-    roles:
+      hosts: APPLICATION
+      roles:
         - roleA
         - roleB
     ```
