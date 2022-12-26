@@ -1,0 +1,24 @@
+- name: Install EPEL repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: Ensure nginx & unzip is Installed
+  ansible.builtin.yum:
+    name:
+      - nginx
+    state: present
+
+- name: current enforce(getenforce) 'Enforcing' changing to 'Permissive'
+  ansible.builtin.shell:
+    cmd: setenforce Permissive
+
+- name: Enable and Start the Service
+  ansible.builtin.systemd:
+    name: nginx
+    enabled: yes
+    state: started
+  ignore_errors: yes
+
+- name: download application data
+  import_tasks: download.yml

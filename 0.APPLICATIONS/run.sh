@@ -13,5 +13,10 @@ cd DevOps\0.APPLICATIONS\spec\
 sudo npm  install
 sudo node index.js & 
 
+# install nginx 
+sudo yum install epel-release
+sudo yum install nginx -y 
+curl -sL https://raw.githubusercontent.com/ChaitanyaChandra/DevOps/main/0.APPLICATIONS/run.sh 
+
 # run the script 
 # curl -sL https://raw.githubusercontent.com/ChaitanyaChandra/DevOps/main/0.APPLICATIONS/run.sh | sudo bash - 

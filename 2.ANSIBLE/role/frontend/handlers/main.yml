@@ -1,0 +1,5 @@
+- name: restart nginx Service
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+  ignore_errors: yes

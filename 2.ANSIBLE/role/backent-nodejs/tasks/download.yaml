@@ -1,0 +1,32 @@
+- name: when git dwonload is defined
+  block:
+    - name: Download and UnZip the Application Content
+      ansible.builtin.unarchive:
+        src: https://github.com/ChaitanyaChandra/DevOps/archive/main.zip
+        dest: /tmp
+        remote_src: yes
+
+    - name: Copy App Content
+      ansible.builtin.copy:
+        src: /tmp/devops-main/0.APPLICATIONS/spec/
+        dest: /home/{{USER}}/{{COMPONENT}}/
+        remote_src: yes
+      become_user: "{{USER}}"
+  when: GIT_DOWNLOAD is defined
+
+# - name: when GIT_DOWNLOAD is not defined
+#   block:
+#     - name: Download {{COMPONENT}} from Nexus
+#       ansible.builtin.get_url:
+#         url: http://nexus-dev.chaitu.org:8081/repository/{{PROJECT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+#         dest: /tmp
+#         username: "{{NEXUS_USERNAME}}"
+#         password: "{{NEXUS_PASSWORD}}"
+
+#     - name: Unzip {{COMPONENT}}
+#       ansible.builtin.unarchive:
+#         src: /tmp/{{COMPONENT}}-{{APP_VERSION}}.zip
+#         dest: /home/{{USER}}/{{COMPONENT}}/
+#         remote_src: yes
+#       become_user: "{{USER}}"
+#   when: GIT_DOWNLOAD is not defined
