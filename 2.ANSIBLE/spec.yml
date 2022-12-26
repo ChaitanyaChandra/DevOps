@@ -1,8 +1,8 @@
 ---
-- name: nginx reverse proxy setup for nodejs
+— name: nginx reverse proxy setup for nodejs
   hosts: localhost
   vars:
-    - COMPONENT: backend-nodejs
+    — COMPONENT: backend-nodejs
   become: yes
   roles: 
-    - "{{COMPONENT}}"
+    — "{{COMPONENT}}"
