@@ -1,13 +1,13 @@
 ---
-# — name: nginx reverse proxy setup for nodejs
-#   hosts: localhost
-#   vars:
-#     — COMPONENT: backend-nodejs
-#   become: yes
-#   roles: 
-#     — "{{ COMPONENT }}"
 - name: print message
   hosts: localhost
   tasks: 
     - ansible.builtin.debug:
         msg: "this is test one"
+- name: nginx reverse proxy setup for nodejs
+  hosts: localhost
+  vars:
+    - COMPONENT: backend-nodejs
+  become: yes
+  roles: 
+    - "{{ COMPONENT }}"
