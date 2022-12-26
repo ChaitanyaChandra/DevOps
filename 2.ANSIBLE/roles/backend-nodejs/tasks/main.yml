@@ -7,10 +7,9 @@
       - epel-release
       - gcc-c++ 
       - make
-      - nodejs
-    state: installed
+    state: present
 
-- name: Install EPEL repo
+- name: Install nodejs
   yum:
     name: nodejs
     state: installed
