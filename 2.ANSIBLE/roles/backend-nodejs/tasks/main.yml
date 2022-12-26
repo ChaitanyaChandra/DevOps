@@ -7,6 +7,7 @@
     name:
       - gcc-c++ 
       - make
+      - nodejs
     state: installed
 
 # - name: Application User Setup and Download App Files
