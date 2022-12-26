@@ -4,6 +4,7 @@
 - name: Install NodeJS Service
   ansible.builtin.yum:
     name:
+      - epel-release
       - nodejs
       - unzip
     state: installed
