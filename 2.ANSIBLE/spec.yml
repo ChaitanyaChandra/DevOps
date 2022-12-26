@@ -8,4 +8,4 @@
     - DOMAIN: chaitu.org
   become: yes
   roles:
-    - "{{ role_component }}"
+    - "{{ component }}"
