@@ -1,18 +1,10 @@
-- name: Setup NodeJs repo
-  ansible.builtin.shell: sudo curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-
 - name: Install NodeJS dependencies 
   ansible.builtin.yum:
     name:
       - epel-release
-      - gcc-c++ 
-      - make
+      - unzip
+      - nodejs
     state: present
-
-- name: Install nodejs
-  yum:
-    name: nodejs
-    state: installed
 
 # - name: Application User Setup and Download App Files
 #   import_tasks: app-user-setup.yml
