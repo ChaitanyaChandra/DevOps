@@ -1,3 +1,4 @@
+---
 - name: install the component 
   hosts: all 
   roles : "{{ role_component }}"
