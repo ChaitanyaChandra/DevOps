@@ -4,9 +4,9 @@
 - name: Install NodeJS Service
   ansible.builtin.yum:
     name:
-      - nodejs
       - make
       - gcc-c++
+      - nodejs
       - unzip
     state: installed
 
