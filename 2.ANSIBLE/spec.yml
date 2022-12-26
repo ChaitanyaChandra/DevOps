@@ -5,4 +5,4 @@
     - COMPONENT: backend-nodejs
   become: yes
   roles:
-    - "{{ COMPONENT }}"
+    - "{{COMPONENT}}"
