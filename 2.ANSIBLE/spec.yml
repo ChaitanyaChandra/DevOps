@@ -1,4 +1,11 @@
 ---
-- name: install the component 
+- name: nginx reverse proxy setup for nodejs
   hosts: localhost
-  roles : "{{ role_component }}"
+  vars:
+    - COMPONENT: nodejs
+    - SERVICE: nodejs-internal #  nodejs-internal-dev.chaitu.org:8080
+    - ENV: dev
+    - DOMAIN: chaitu.org
+  become: yes
+  roles:
+    - "{{ role_component }}"
