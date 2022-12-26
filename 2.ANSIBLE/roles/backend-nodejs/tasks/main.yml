@@ -1,10 +1,14 @@
 - name: Setup NodeJs repo
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
+- name: Install EPEL repo
+  yum:
+    name: epel-release
+    state: present
+
 - name: Install NodeJS Service
   ansible.builtin.yum:
     name:
-      - epel-release
       - nodejs
       - unzip
     state: installed
