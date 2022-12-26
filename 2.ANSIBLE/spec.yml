@@ -10,4 +10,4 @@
     - COMPONENT: backend-nodejs
   become: yes
   roles: 
-    - "{{ COMPONENT }}"
+    - backend-nodejs
