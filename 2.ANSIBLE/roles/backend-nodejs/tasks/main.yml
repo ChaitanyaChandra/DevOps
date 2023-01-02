@@ -24,7 +24,7 @@
 
 - name:  Copy {{COMPONENT}} filebeat and rsyslog config
   template: src={{ item.src }} dest={{ item.dest }}
-  with_items:
+  loop:
     - { src: 'systemd.service' , dest: '/etc/systemd/system/{{COMPONENT}}.service' }
     - { src: 'rsyslog.conf' , dest: '/etc/rsyslog.d/{{COMPONENT}}.conf' }
 
