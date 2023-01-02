@@ -3,7 +3,7 @@
     name: epel-release
     state: present
 
-- name: Ensure nginx & unzip is Installed
+- name: Ensure nginx  is Installed
   ansible.builtin.yum:
     name:
       - nginx

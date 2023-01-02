@@ -2,7 +2,7 @@
   ansible.builtin.template:
     src:  "{{item.file}}"
     dest: "{{item.dest}}"
-  with_items:
+  loop:
     - { file: 'nodejs.conf', dest: '/etc/nginx/conf.d/nodejs.conf' }
     - { file: 'nginx.conf', dest: '/etc/nginx/nginx.conf' }
   notify: restart nginx Service
