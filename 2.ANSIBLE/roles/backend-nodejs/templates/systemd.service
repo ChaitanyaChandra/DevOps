@@ -3,7 +3,7 @@ Description = {{COMPONENT}} Service
 
 [Service]
 User={{USER}}
-ExecStart=/usr/bin/node server.js
+ExecStart=/usr/bin/node index.js
 SyslogIdentifier={{COMPONENT}}
 WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
 # StandardOutput=syslog
