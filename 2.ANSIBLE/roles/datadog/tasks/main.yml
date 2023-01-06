@@ -1,14 +1,5 @@
-- name: Create Parameters
-  hosts: localhost
-  tasks:
-    - name: Update a Parameter
-      community.aws.aws_ssm_parameter_store:
-        name: "{{item.name}}"
-        string_type: "String"
-        value: "{{item.value}}"
-        overwrite_value: "always"
-      loop:
-        - { name: "spec.DD_SITE", value: "datadoghq.com"}
+- name: Application User Setup and Download App Files
+  import_tasks: perameters.yml
 
 - name: Install DataDog.
   ansible.builtin.shell: bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"

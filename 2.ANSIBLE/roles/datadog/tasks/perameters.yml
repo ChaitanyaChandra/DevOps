@@ -1,0 +1,11 @@
+- name: Create Parameters
+  hosts: localhost
+  tasks:
+    - name: Update a Parameter
+      community.aws.aws_ssm_parameter_store:
+        name: "{{item.name}}"
+        string_type: "String"
+        value: "{{item.value}}"
+        overwrite_value: "always"
+      loop:
+        - { name: "spec.DD_SITE", value: "datadoghq.com"}
