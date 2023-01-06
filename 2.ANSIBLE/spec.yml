@@ -1,6 +1,6 @@
 ---
 - name: nginx reverse proxy setup for nodejs
-  hosts: localhost
+  hosts: local
   become: yes
   roles: 
     - "{{ROLE}}"
