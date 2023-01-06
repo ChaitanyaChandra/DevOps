@@ -1,5 +1,5 @@
  - name: Update a Parameter
-   community.aws.aws_ssm_parameter_store:
+   community.aws.ssm_paramater:
      name: "{{item.name}}"
      string_type: "String"
      value: "{{item.value}}"
