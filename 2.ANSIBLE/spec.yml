@@ -1,11 +1,8 @@
 ---
-- name: print message
-  hosts: localhost
-  tasks: 
-    - ansible.builtin.debug:
-        msg: "this is test one"
 - name: nginx reverse proxy setup for nodejs
   hosts: localhost
+  vars: 
+    - ansible_python_interpreter=/usr/bin/python3
   become: yes
   roles: 
     - "{{ROLE}}"
