@@ -1,8 +1,8 @@
- - name: Update a Parameter
-   community.aws.ssm_paramater:
-     name: "{{item.name}}"
-     string_type: "String"
-     value: "{{item.value}}"
-     overwrite_value: "always"
-   loop:
-     - { name: "spec.DD_SITE", value: "datadoghq.com"}
+- name: Update a Parameter
+  community.aws.ssm_paramater:
+    name: "{{item.name}}"
+    string_type: "String"
+    value: "{{item.value}}"
+    overwrite_value: "always"
+  loop:
+    - { name: "spec.DD_SITE", value: "datadoghq.com"}
