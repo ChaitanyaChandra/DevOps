@@ -1,6 +1,8 @@
 ---
 - name: nginx reverse proxy setup for nodejs
   hosts: localhost
+  collections:
+    - community.aws
   become: yes
   roles: 
     - "{{ROLE}}"
