@@ -7,7 +7,7 @@
 #   roles: 
 #     - "{{ROLE}}"
 
-- name: Install and start Apache HTTP server
+- name: list s3 buckets
   hosts: all
   become: true
 
