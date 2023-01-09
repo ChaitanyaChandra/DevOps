@@ -8,9 +8,9 @@
 #     - "{{ROLE}}"
 
 - name: List all S3 buckets
-  s3_bucket_facts:
-    region: us-east-1
-  register: s3_buckets
-
-- debug:
-    var: s3_buckets
+  tasks:
+    s3_bucket_facts:
+      region: us-east-1
+      register: s3_buckets
+    debug:
+      var: s3_buckets
