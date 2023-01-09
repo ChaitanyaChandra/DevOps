@@ -1,23 +1,8 @@
 ---
-# - name: nginx reverse proxy setup for nodejs
-#   hosts: localhost
-#   collections:
-#     - community.aws
-#   become: yes
-#   roles: 
-#     - "{{ROLE}}"
-
-- name: list s3 bucket
-  hosts: all
-  become: true
-
-  tasks:
-
-  - name: Update a Parameter
-    community.aws.ssm_parameter:
-      name: "{{item.name}}"
-      string_type: "String"
-      value: "{{item.value}}"
-      overwrite_value: "always"
-    loop:
-      - { name: "spec.DD_SITE", value: "datadoghq.com"}
+- name: nginx reverse proxy setup for nodejs
+  hosts: localhost
+  collections:
+    - community.aws
+  become: yes
+  roles: 
+    - "{{ROLE}}"
