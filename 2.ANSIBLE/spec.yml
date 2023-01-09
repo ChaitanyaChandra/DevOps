@@ -1,8 +1,16 @@
 ---
-- name: nginx reverse proxy setup for nodejs
-  hosts: localhost
-  collections:
-    - community.aws
-  become: yes
-  roles: 
-    - "{{ROLE}}"
+# - name: nginx reverse proxy setup for nodejs
+#   hosts: localhost
+#   collections:
+#     - community.aws
+#   become: yes
+#   roles: 
+#     - "{{ROLE}}"
+
+- name: List all S3 buckets
+  s3_bucket_facts:
+    region: us-east-1
+  register: s3_buckets
+
+- debug:
+    var: s3_buckets
