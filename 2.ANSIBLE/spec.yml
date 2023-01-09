@@ -7,10 +7,18 @@
 #   roles: 
 #     - "{{ROLE}}"
 
-- name: List all S3 buckets
+- name: Install and start Apache HTTP server
+  hosts: all
+  become: true
+
   tasks:
+  - name: list s3 bucket
     s3_bucket_facts:
       region: us-east-1
-      register: s3_buckets
+    register: s3_buckets
+
+  - name: print s3 buckets
     debug:
       var: s3_buckets
+
+
