@@ -7,18 +7,17 @@
 #   roles: 
 #     - "{{ROLE}}"
 
-- name: list s3 buckets
+- name: list s3 bucket
   hosts: all
   become: true
 
   tasks:
-  - name: list s3 bucket
-    s3_bucket_facts:
-      region: us-east-1
-    register: s3_buckets
 
-  - name: print s3 buckets
-    debug:
-      var: s3_buckets
-
-
+  - name: Update a Parameter
+    community.aws.ssm_paramater:
+      name: "{{item.name}}"
+      string_type: "String"
+      value: "{{item.value}}"
+      overwrite_value: "always"
+    loop:
+      - { name: "spec.DD_SITE", value: "datadoghq.com"}
