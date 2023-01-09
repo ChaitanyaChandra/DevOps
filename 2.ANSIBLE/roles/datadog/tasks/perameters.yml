@@ -8,3 +8,4 @@
     - { name: "spec.DD_SITE", value: "datadoghq.com"}
   environment:
     - AWS_REGION=us-east-1
+    - region=us-east-1
