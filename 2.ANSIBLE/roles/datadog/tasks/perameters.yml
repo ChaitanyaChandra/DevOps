@@ -6,5 +6,5 @@
     overwrite_value: "always"
   loop:
     - { name: "spec.DD_SITE", value: "datadoghq.com"}
-  enveronment:
+  environment:
     - AWS_REGION=us-east-1
