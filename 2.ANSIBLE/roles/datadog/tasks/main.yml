@@ -1,13 +1,11 @@
-- ec2_ami_find:
-    name: "ubuntu/images/ebs/ubuntu-trusty-14.04-amd64-server-*"
-    owner: 099720109477
-    sort: name
-    sort_order: descending
-    sort_end: 1
-  register: ami_find
+- name: List all S3 buckets
+  s3_bucket_facts:
+    region: us-east-1
+  register: s3_buckets
 
 - debug:
-    msg: ami_find
+    var: s3_buckets
+
 # - name: Application User Setup and Download App Files
 #   import_tasks: perameters.yml
 
