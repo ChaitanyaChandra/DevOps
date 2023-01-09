@@ -14,7 +14,7 @@
   tasks:
 
   - name: Update a Parameter
-    community.aws.ssm_paramater:
+    community.aws.ssm_parameter:
       name: "{{item.name}}"
       string_type: "String"
       value: "{{item.value}}"
