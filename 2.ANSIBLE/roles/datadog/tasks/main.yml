@@ -1,23 +1,25 @@
+- ec2_ami_find:
+    name: "ubuntu/images/ebs/ubuntu-trusty-14.04-amd64-server-*"
+    owner: 099720109477
+    sort: name
+    sort_order: descending
+    sort_end: 1
+  register: ami_find
+
+- debug:
+    msg: ami_find
 # - name: Application User Setup and Download App Files
 #   import_tasks: perameters.yml
-- name: Update a Parameter
-  community.aws.ssm_paramater:
-    name: "{{item.name}}"
-    string_type: "String"
-    value: "{{item.value}}"
-    overwrite_value: "always"
-  loop:
-    - { name: "spec.DD_SITE", value: "datadoghq.com"}
 
-- name: Install DataDog.
-  ansible.builtin.shell: bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
-  environment:
-    DD_AGENT_MAJOR_VERSION=7 
-    DD_API_KEY={{API_KEY.DD_API_KEY}}
-    DD_SITE="{{ lookup('aws_ssm', 'spec.DD_SITE', region='us-east-1' ) }}"
+# - name: Install DataDog.
+#   ansible.builtin.shell: bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+#   environment:
+#     DD_AGENT_MAJOR_VERSION=7 
+#     DD_API_KEY={{API_KEY.DD_API_KEY}}
+#     DD_SITE="{{ lookup('aws_ssm', 'spec.DD_SITE', region='us-east-1' ) }}"
 
-- name: Update MongoDB Listen address
-  ansible.builtin.replace:
-    path: /etc/mongod.conf
-    regexp: '# logs_enabled: false'
-    replace: 'logs_enabled: true'
+# - name: Update MongoDB Listen address
+#   ansible.builtin.replace:
+#     path: /etc/mongod.conf
+#     regexp: '# logs_enabled: false'
+#     replace: 'logs_enabled: true'
