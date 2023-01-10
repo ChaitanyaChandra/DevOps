@@ -1,4 +1,6 @@
 - name: Update a Parameter
+  vars:
+    - AWS_REGION=us-east-1
   community.aws.ssm_parameter:
     name: "{{item.name}}"
     string_type: "String"
@@ -6,6 +8,3 @@
     overwrite_value: "always"
   loop:
     - { name: "spec.DD_SITE", value: "datadoghq.com"}
-  environment:
-    - AWS_REGION=us-east-1
-    - region=us-east-1
