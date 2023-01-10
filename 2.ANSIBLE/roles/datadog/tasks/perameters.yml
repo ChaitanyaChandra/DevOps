@@ -4,6 +4,6 @@
     string_type: "String"
     value: "{{item.value}}"
     overwrite_value: "always"
-    AWS_REGION: us-east-1
+    aws_region: us-east-1
   loop:
     - { name: "spec.DD_SITE", value: "datadoghq.com"}
