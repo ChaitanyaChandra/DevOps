@@ -14,6 +14,11 @@
     replace: 'logs_enabled: true'
   notify: restart Service
 
+- name: Creates directory for integration
+  builtin.template.file:
+    path: /etc/datadog-agent/conf.d/custom_nginx.d
+    state: directory
+
 - name: place integration files
   ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
   loop:
