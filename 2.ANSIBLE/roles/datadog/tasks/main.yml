@@ -4,9 +4,9 @@
 - name: Install DataDog.
   ansible.builtin.shell: bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
   environment:
-    DD_AGENT_MAJOR_VERSION=7 
-    DD_API_KEY={{API_KEY.DD_API_KEY}}
-    DD_SITE="{{ lookup('aws_ssm', 'spec.DD_SITE', region='us-east-1' ) }}"
+    DD_AGENT_MAJOR_VERSION:7 
+    DD_API_KEY:{{API_KEY.DD_API_KEY}}
+    DD_SITE:"{{ lookup('aws_ssm', 'spec.DD_SITE', region='us-east-1' ) }}"
 
 - name: Update MongoDB Listen address
   ansible.builtin.replace:
