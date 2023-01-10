@@ -1,6 +1,4 @@
 - name: Update a Parameter
-  vars:
-    - AWS_REGION=us-east-1
   community.aws.ssm_parameter:
     name: "{{item.name}}"
     string_type: "String"
