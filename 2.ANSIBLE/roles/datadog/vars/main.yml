@@ -1,3 +1,1 @@
 API_KEY: "{{lookup('amazon.aws.aws_secret', 'spec/datadog', region='us-east-1')}}"
-aws_region: us-east-1
-AWS_REGION: us-east-1
