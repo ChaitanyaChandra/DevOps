@@ -9,6 +9,6 @@
 
 - name: Update MongoDB Listen address
   ansible.builtin.replace:
-    path: /etc/mongod.conf
+    path: /etc/datadog-agent/datadog.yaml
     regexp: '# logs_enabled: false'
     replace: 'logs_enabled: true'
