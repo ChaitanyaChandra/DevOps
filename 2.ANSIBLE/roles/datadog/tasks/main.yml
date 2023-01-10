@@ -12,4 +12,7 @@
     path: /etc/datadog-agent/datadog.yaml
     regexp: '# logs_enabled: false'
     replace: 'logs_enabled: true'
+  ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
+  loop:
+    - { src: 'conf.yml' , dest: '/etc/datadog-agent/conf.d/nginx.d/conf.yml' }
   notify: restart Service
