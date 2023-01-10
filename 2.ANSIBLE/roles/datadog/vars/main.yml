@@ -1,1 +1,1 @@
-API_KEY: "{{lookup('amazon.aws.aws_secret', 'spec/datadog', region='us-east-1')}}"
+API_KEY: "{{lookup('amazon.aws.aws_secret', '/spec/datadog', region='us-east-1')}}"
