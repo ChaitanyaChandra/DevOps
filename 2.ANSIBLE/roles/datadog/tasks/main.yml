@@ -12,3 +12,4 @@
     path: /etc/datadog-agent/datadog.yaml
     regexp: '# logs_enabled: false'
     replace: 'logs_enabled: true'
+  notify: restart Service

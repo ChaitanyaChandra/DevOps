@@ -1,0 +1,4 @@
+- name: restart Service
+  ansible.builtin.systemd:
+    name: datadog-agent
+    state: restarted
