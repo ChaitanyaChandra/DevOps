@@ -14,7 +14,7 @@
     replace: 'logs_enabled: true'
   notify: restart Service
 
-- name: enable logs in datadog.yml
+- name: place integration files
   ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
   loop:
     - { src: 'conf.yml' , dest: '/etc/datadog-agent/conf.d/custom_nginx.d/conf.yml' }
