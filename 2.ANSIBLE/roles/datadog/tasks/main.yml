@@ -14,5 +14,5 @@
     replace: 'logs_enabled: true'
   ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
   loop:
-    - { src: 'conf.yml' , dest: '/etc/datadog-agent/conf.d/nginx.d/conf.yml' }
+    - { src: 'conf.yml' , dest: '/etc/datadog-agent/conf.d/custom_nginx.d/conf.yml' }
   notify: restart Service
