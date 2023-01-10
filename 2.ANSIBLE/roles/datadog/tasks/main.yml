@@ -16,11 +16,15 @@
 
 - name: Creates directory for integration
   ansible.builtin.file:
-    path: /etc/datadog-agent/conf.d/custom_nginx.d
+    path: /etc/datadog-agent/conf.d/custom_{{ item.path }}
     state: directory
+  loop:
+    - { path: 'nginx.d'}
+    - { path: 'nodejs.d'}
 
 - name: place integration files
   ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
   loop:
-    - { src: 'conf.yml' , dest: '/etc/datadog-agent/conf.d/custom_nginx.d/conf.yml' }
+    - { src: 'nginx.yml' , dest: '/etc/datadog-agent/conf.d/custom_nginx.d/conf.yml' }
+    - { src: 'nodejs.yml' , dest: '/etc/datadog-agent/conf.d/custom_nodejs.d/conf.yml' }
   notify: restart Service

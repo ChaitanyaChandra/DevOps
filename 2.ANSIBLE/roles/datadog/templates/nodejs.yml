@@ -1,0 +1,6 @@
+logs:
+  - type: file
+    path: '/var/log/nodejs-app.log'
+    service: nodejs
+    source: application
+    tags: env:dev
