@@ -44,7 +44,7 @@ app.post('/', function(req, res) {
         let cmd_memoryInfo = child_process.execSync("cat /proc/meminfo");
         command_data.items[3] = {meminfo : cmd_memoryInfo.toString()}
         // .replace(/\n?\r\n/g, '<br />' )
-        console.log(command_data)
+        console.log(JSON.stringify(command_data))
         res.render('spec', {
             hostname: command_data.items[0].hostname,
             uptime: command_data.items[1].uptime,

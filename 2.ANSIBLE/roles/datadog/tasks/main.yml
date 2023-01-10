@@ -22,6 +22,8 @@
     - { path: 'nginx.d'}
     - { path: 'nodejs.d'}
 
+#sudo chown -R dd-agent:dd-agent /var/log/nodejs-app.log
+
 - name: place integration files
   ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
   loop:
