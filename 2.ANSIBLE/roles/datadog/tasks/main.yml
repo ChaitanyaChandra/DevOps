@@ -15,7 +15,7 @@
   notify: restart Service
 
 - name: Creates directory for integration
-  builtin.template.file:
+  ansible.builtin.file:
     path: /etc/datadog-agent/conf.d/custom_nginx.d
     state: directory
 
