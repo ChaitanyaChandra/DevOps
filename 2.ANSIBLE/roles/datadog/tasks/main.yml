@@ -16,17 +16,13 @@
 
 - name: Creates directory for integration
   ansible.builtin.file:
-    path: /etc/datadog-agent/conf.d/custom_{{ item.path }}
+    path: /etc/datadog-agent/conf.d/custom_{{ APP_NAME }}.d
     state: directory
-  loop:
-    - { path: 'nginx.d'}
-    - { path: 'nodejs.d'}
 
-#sudo chown -R dd-agent:dd-agent /var/log/nodejs-app.log
+- name: log file permissions for datadog.
+  ansible.builtin.shell: |
+      sudo chown -R dd-agent:dd-agent {{ LOG_FILE }}
 
 - name: place integration files
-  ansible.builtin.template: src={{ item.src }} dest={{ item.dest }}
-  loop:
-    - { src: 'nginx.yml' , dest: '/etc/datadog-agent/conf.d/custom_nginx.d/conf.yml' }
-    - { src: 'nodejs.yml' , dest: '/etc/datadog-agent/conf.d/custom_nodejs.d/conf.yml' }
+  ansible.builtin.template: src='conf.yml' dest='/etc/datadog-agent/conf.d/custom_{{ APP_NAME }}/conf.yml'
   notify: restart Service

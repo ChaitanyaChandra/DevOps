@@ -1,0 +1,38 @@
+---
+- name: install application 
+  hosts: localhost
+  become: yes
+  roles: 
+    - "nodejs-backend"
+---
+- name: configure datadog for application 
+  hosts: localhost
+  vars: 
+    APP_NAME: nodejs
+    LOG_FILE: '/var/log/nodejs-app.log'
+    SERVICE: 'nodejs-app'
+    SOURCE: 'application'
+    TAGS: 'env:dev'
+  become: yes
+  roles: 
+    - "datadog"
+---
+- name: install nginx webserver 
+  hosts: localhost
+  become: yes
+  vars: 
+   proxy_host : localhost
+  roles: 
+    - "frontend"
+---
+- name: configure datadog for nginx 
+  hosts: localhost
+  vars: 
+    APP_NAME: nginx
+    LOG_FILE: '/var/log/nginx.log'
+    SERVICE: 'nginx'
+    SOURCE: 'webserver'
+    TAGS: 'env:dev'
+  become: yes
+  roles: 
+    - "datadog"

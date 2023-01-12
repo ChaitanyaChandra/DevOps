@@ -1,6 +1,0 @@
-logs:
-  - type: file
-    path: '/var/log/nginx.log'
-    service: nginx
-    source: webserver
-    tags: env:dev

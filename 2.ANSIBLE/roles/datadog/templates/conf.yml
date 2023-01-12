@@ -1,0 +1,6 @@
+logs:
+  - type: file
+    path: {{ LOG_FILE }}
+    service: {{ SERVICE}}
+    source: {{ SOURCE }}
+    tags: {{ TAGS }}
