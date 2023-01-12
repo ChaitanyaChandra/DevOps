@@ -24,5 +24,5 @@
       sudo chown -R dd-agent:dd-agent {{ LOG_FILE }}
 
 - name: place integration files
-  ansible.builtin.template: src='conf.yml' dest='/etc/datadog-agent/conf.d/custom_{{ APP_NAME }}/conf.yml'
+  ansible.builtin.template: src='conf.yml' dest='/etc/datadog-agent/conf.d/custom_{{ APP_NAME }}.d/conf.yml'
   notify: restart Service
