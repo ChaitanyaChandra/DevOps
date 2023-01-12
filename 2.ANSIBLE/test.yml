@@ -3,7 +3,7 @@
   hosts: localhost
   become: yes
   roles: 
-    - "nodejs-backend"
+    - "backend-nodejs"
 ---
 - name: configure datadog for application 
   hosts: localhost
@@ -17,7 +17,7 @@
   roles: 
     - "datadog"
 ---
-- name: install nginx webserver 
+- name: install nginx webserver
   hosts: localhost
   become: yes
   vars: 
