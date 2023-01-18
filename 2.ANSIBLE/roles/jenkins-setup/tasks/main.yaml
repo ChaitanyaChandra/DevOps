@@ -44,8 +44,11 @@
   ansible.builtin.shell:
     cmd: setenforce Permissive
 
-- name: Copy jenkins reverse proxy configuration
+- name: Copy {{ COMPONENT }} reverse proxy configuration
   ansible.builtin.template:
-    src: jenkins.conf
-    dest: /etc/nginx/conf.d/jenkins.conf
+    src:  "{{item.file}}"
+    dest: "{{item.dest}}"
+  loop:
+    - { file: 'jenkins.conf', dest: '/etc/nginx/conf.d/jenkins.conf' }
+    - { file: 'nginx.conf', dest: '/etc/nginx/nginx.conf' }
   notify: restart nginx Service
