@@ -1,0 +1,69 @@
+- name: Set Hostname
+  ansible.builtin.shell:  hostnamectl set-hostname {{COMPONENT}}-{{ENV}}
+
+- name: Install EPEL repo
+  ansible.builtin.yum:
+    name: epel-release
+    state: present
+
+- name: Ensure java &  sonarqube is Installed
+  ansible.builtin.yum:
+    name:
+      - java-11-openjdk
+      - git
+      - nginx
+      - unzip
+    state: present
+
+- name: Add Application User
+  ansible.builtin.user:
+    name: "{{COMPONENT}}"
+
+- name: Download and UnZip the {{COMPONENT}} Content
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.8.54436.zip
+    dest: /home/{{ COMPONENT }}/ # already existing path
+#    creates: /home/{{ COMPONENT }}/sonarqube/bin/linux-x86-64/sonar.sh  # some path to make sure that the archive has already been unpacked
+    remote_src: yes
+
+- name: remove sonarqube verison
+  shell: "rm -rf /home/{{ COMPONENT }}/sonarqube/ ; mv  /home/{{ COMPONENT }}/sonarqube-8.9.8.54436 /home/{{ COMPONENT }}/sonarqube"
+
+- name: Change file ownership, group and permissions
+  ansible.builtin.file:
+    path: /home/{{ COMPONENT }}/
+    owner: "{{ COMPONENT }}"
+    group: "{{ COMPONENT }}"
+    recurse: yes
+    mode: '0777'
+
+- name: Kill running processes
+  shell: "pkill java"
+  ignore_errors: yes
+
+- name: current enforce(getenforce) 'Enforcing' changing to 'Permissive'
+  ansible.builtin.shell:
+    cmd: setenforce Permissive
+
+- name: Copy sonar reverse proxy configuration
+  ansible.builtin.template:
+    src:  sonar.conf
+    dest: /etc/nginx/conf.d/sonar.conf
+
+- name: Copy sonar qube service
+  ansible.builtin.template:
+    src:  sonar.service
+    dest: /etc/systemd/system/sonarqube.service
+
+- name: restart the service
+  ansible.builtin.systemd:
+    name: sonarqube
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+#   become_user:  "{{ COMPONENT }}" # user need to be add in sudoers
+
+- name: restart nginx service
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted

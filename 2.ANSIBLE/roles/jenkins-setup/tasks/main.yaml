@@ -1,0 +1,51 @@
+- name: Set Hostname
+  ansible.builtin.shell:  hostnamectl set-hostname {{COMPONENT}}-{{ENV}}
+
+- name: Copy jenkins Repo
+  copy:
+    src: jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Install EPEL repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: Ensure java & Jenkins is Installed
+  ansible.builtin.yum :
+    name:
+      - java-11-openjdk
+      - jenkins
+      - git
+      - nginx
+    state: present
+  notify: Enable and Start the Service
+
+- name: Create a init.groovy.d directory if it does not exist
+  ansible.builtin.file:
+    path: /var/lib/jenkins/init.groovy.d/
+    state: directory
+    mode: '0755'
+
+- name: init jenkins with groovy scripts
+  loop: "{{ scripts }}"
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: /var/lib/jenkins/init.groovy.d/{{ item }}
+  notify: restart jenkins Service
+
+#- name: copy_cert
+#  loop: "{{ cert }}"
+#  ansible.builtin.copy:
+#    src: "{{ item }}"
+#    dest: /etc/nginx/{{ item }}
+
+- name: current enforce(getenforce) 'Enforcing' changing to 'Permissive'
+  ansible.builtin.shell:
+    cmd: setenforce Permissive
+
+- name: Copy jenkins reverse proxy configuration
+  ansible.builtin.template:
+    src: jenkins.conf
+    dest: /etc/nginx/conf.d/jenkins.conf
+  notify: restart nginx Service

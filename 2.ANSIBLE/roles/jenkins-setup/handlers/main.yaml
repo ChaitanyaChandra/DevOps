@@ -1,0 +1,17 @@
+- name: restart jenkins Service
+  ansible.builtin.systemd:
+    name: jenkins
+    state: restarted
+  ignore_errors: yes
+
+- name: restart nginx Service
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+
+- name: Enable and Start the Service
+  loop: "{{ apps }}"
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started

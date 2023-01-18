@@ -1,0 +1,17 @@
+USER_NAME : chaitu
+PASSWORD: "@123Chaitu"
+apps:
+  - jenkins
+  - nginx
+
+scripts:
+  - admin_setup.groovy
+  - plugins.groovy
+#  - approval.groovy
+
+COMPONENT: jenkins
+ENV: dev
+
+cert:
+  - server.crt
+  - server.key
