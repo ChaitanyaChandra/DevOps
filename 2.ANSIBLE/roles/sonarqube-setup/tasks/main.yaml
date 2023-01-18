@@ -45,10 +45,13 @@
   ansible.builtin.shell:
     cmd: setenforce Permissive
 
-- name: Copy sonar reverse proxy configuration
+- name: Copy {{ COMPONENT }} reverse proxy configuration
   ansible.builtin.template:
-    src:  sonar.conf
-    dest: /etc/nginx/conf.d/sonar.conf
+    src:  "{{item.file}}"
+    dest: "{{item.dest}}"
+  loop:
+    - { file: 'sonar.conf', dest: '/etc/nginx/conf.d/sonar.conf' }
+    - { file: 'nginx.conf', dest: '/etc/nginx/nginx.conf' }
 
 - name: Copy sonar qube service
   ansible.builtin.template:
