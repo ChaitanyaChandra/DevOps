@@ -29,7 +29,6 @@ pipeline {
                     {
                     dir('DevOps/2.ANSIBLE/') {
                     sh 'ansible --version'
-                    sh 'pwd'
                         }                        
                     }
                 }
@@ -39,7 +38,6 @@ pipeline {
                     {
                     dir('DevOps/2.ANSIBLE/') {
                     sh 'ansible -m ping all'
-                    sh 'pwd'
                         }                         
                     }
                 }
@@ -50,7 +48,9 @@ pipeline {
         {
             steps
             {
+            dir('DevOps/2.ANSIBLE/') {           
             sh "ansible-playbook test.yml"
+                }
             }
         }
     }
