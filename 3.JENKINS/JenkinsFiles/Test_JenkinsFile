@@ -18,6 +18,7 @@ pipeline {
             {
             git branch: 'main', url: 'https://github.com/ChaitanyaChandra/DevOps.git'
             dir('DevOps/2.ANSIBLE/') {
+                sh 'pwd'
             }
             }
          }
