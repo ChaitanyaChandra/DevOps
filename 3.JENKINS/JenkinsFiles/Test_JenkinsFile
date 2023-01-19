@@ -28,7 +28,7 @@ pipeline {
                 steps
                     {
                     dir('DevOps/2.ANSIBLE/') {
-                        sh 'ls ; ansible --version'
+                        sh 'pwd ; ansible --version'
                         }                        
                     }
                 }
