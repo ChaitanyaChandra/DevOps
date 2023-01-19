@@ -1,12 +1,12 @@
 ---
 - name: install application 
-  hosts: localhost
+  hosts: test-server
   become: yes
   roles: 
     - "backend-nodejs"
 
 - name: configure datadog for application 
-  hosts: localhost
+  hosts: test-server
   vars: 
     APP_NAME: nodejs
     LOG_FILE: '/var/log/nodejs-app.log'
@@ -18,7 +18,7 @@
     - "datadog"
 
 - name: install nginx webserver
-  hosts: localhost
+  hosts: test-server
   become: yes
   vars: 
    proxy_host : localhost
@@ -26,7 +26,7 @@
     - "frontend"
     
 - name: configure datadog for nginx 
-  hosts: localhost
+  hosts: test-server
   vars: 
     APP_NAME: nginx
     LOG_FILE: '/var/log/nginx.log'
