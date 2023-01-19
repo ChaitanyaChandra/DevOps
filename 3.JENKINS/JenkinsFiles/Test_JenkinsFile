@@ -17,9 +17,6 @@ pipeline {
             steps
             {
             git branch: 'main', url: 'https://github.com/ChaitanyaChandra/DevOps.git'
-            dir('DevOps/2.ANSIBLE/') {
-                sh 'pwd'
-            }
             }
          }
 
@@ -30,15 +27,20 @@ pipeline {
                 {
                 steps
                     {
+                    dir('DevOps/2.ANSIBLE/') {
                     sh 'ansible --version'
                     sh 'pwd'
+                        }                        
                     }
                 }
                 stage ('ansible ping')
                 {
                 steps
                     {
+                    dir('DevOps/2.ANSIBLE/') {
                     sh 'ansible -m ping all'
+                    sh 'pwd'
+                        }                         
                     }
                 }
             }
