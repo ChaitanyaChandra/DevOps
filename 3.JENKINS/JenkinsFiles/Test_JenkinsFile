@@ -1,0 +1,58 @@
+pipeline {
+//    parameters { string(name: 'VERSION', defaultValue: '1.0.5', description: 'nodejs version') }
+//    agent { label 'work_station'}
+    options {
+        disableConcurrentBuilds()
+        ansiColor('xterm')
+    }
+    // triggers { pollSCM('* * * * *') }
+    // environment {
+    //     SSH = credentials('INSTANCE_CREDS')
+    // }
+    stages
+    {
+        stage ('git clone')
+        {
+            steps
+            {
+            git branch: 'main', url: 'https://github.com/ChaitanyaChandra/DevOps.git'
+            dir('DevOps/2.ANSIBLE/') {
+            }
+            }
+         }
+
+        stage ('parallel stage')
+        {
+            parallel {
+                stage ('ansible version')
+                {
+                steps
+                    {
+                    sh 'ansible --version'
+                    }
+                }
+                stage ('ansible ping')
+                {
+                steps
+                    {
+                    sh 'ansible -m ping all'
+                    }
+                }
+            }
+        }
+        
+        stage ('application setup')
+        {
+            steps
+            {
+            sh "ansible-playbook test.yml"
+            }
+        }
+    }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
+}
