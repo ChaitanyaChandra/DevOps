@@ -1,0 +1,24 @@
+- name: Set Hostname
+  ansible.builtin.shell:  hostnamectl set-hostname {{COMPONENT}}-{{ENV}}
+
+- name: Copy MongoDB repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install MongoDB
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: installed
+
+- name: Update MongoDB config file to listen on 0.0.0.0
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start MongoDB Service
+  ansible.builtin.systemd:
+    name: mongod
+    state: started
+    enabled: yes
