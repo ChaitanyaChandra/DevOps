@@ -9,6 +9,8 @@ let password = "@123Chaitu"
 
 const app = express()
 const port = 8080
+const ver = 0
+const version = ver + process.env.VERSION || ".0"
 
 app.use(express.static('public'))
 app.use(express.static('views/public'))
@@ -50,7 +52,8 @@ app.post('/', function(req, res) {
             uptime: command_data.items[1].uptime,
             lscpu: command_data.items[2].lscpu,
             meminfo: command_data.items[3].meminfo,
-            dev: "chaitanya chandra (chay@outlook.in)"
+            dev: "chaitanya chandra (chay@outlook.in)",
+            version: version
         })        
         
     } else {
