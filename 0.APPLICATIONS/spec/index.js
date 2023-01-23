@@ -10,7 +10,7 @@ let password = "@123Chaitu"
 const app = express()
 const port = 8080
 const ver = "0.0"
-const version = process.env.VERSION || pre
+const version = process.env.VERSION || ver
 
 app.use(express.static('public'))
 app.use(express.static('views/public'))
