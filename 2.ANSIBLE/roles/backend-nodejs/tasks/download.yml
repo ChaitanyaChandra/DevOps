@@ -2,13 +2,13 @@
   block:
     - name: Download and UnZip the Application Content
       ansible.builtin.unarchive:
-        src: https://github.com/ChaitanyaChandra/DevOps/archive/main.zip
+        src: https://github.com/ChaitanyaChandra/app/archive/main.zip
         dest: /tmp
         remote_src: yes
 
     - name: Copy App Content
       ansible.builtin.copy:
-        src: /tmp/DevOps-main/0.APPLICATIONS/spec/
+        src: /tmp/app-main/
         dest: /home/{{USER}}/{{COMPONENT}}/
         remote_src: yes
       become_user: "{{USER}}"

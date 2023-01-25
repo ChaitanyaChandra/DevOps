@@ -1,6 +1,6 @@
 USER: node
 COMPONENT: nodejs-app
 GIT_DOWNLOAD: yes
-DB_PASS: 123chaitu
+DB_PASS: 123Chaitu
 DB_USER: chaitu
 DB_URL: cluster0.wdtudby.mongodb.net
