@@ -1,5 +1,5 @@
-- name: Set Hostname
-  ansible.builtin.shell:  hostnamectl set-hostname {{COMPONENT}}-{{ENV}}
+# - name: Set Hostname
+#   ansible.builtin.shell:  hostnamectl set-hostname {{COMPONENT}}-{{ENV}}
 
 - name: Copy MongoDB repo
   ansible.builtin.copy:
