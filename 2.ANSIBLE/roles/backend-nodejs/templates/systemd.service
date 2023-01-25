@@ -6,6 +6,7 @@ User={{USER}}
 ExecStart=/usr/bin/node index.js
 SyslogIdentifier={{COMPONENT}}
 WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
+Environment="MONGO_ENDPOINT=mongodb+srv://{{DB_USER}}:{{DB_PASS}}@{{DB_URL}}/login-app-db?retryWrites=true&w=majority"
 # StandardOutput=syslog
 # StandardError=syslog
 
