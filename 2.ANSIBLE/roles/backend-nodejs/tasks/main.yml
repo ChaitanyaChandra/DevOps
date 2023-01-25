@@ -1,10 +1,11 @@
-- name: Install NodeJS dependencies 
+- name: Setup NodeJs repo
+  shell: curl -sL https://rpm.nodesource.com/setup_16.x | bash -
+
+- name: Install dependencies 
   ansible.builtin.yum:
     name:
-      - epel-release
       - unzip
       - nodejs
-      - npm
     state: present
 
 - name: Application User Setup and Download App Files
