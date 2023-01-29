@@ -1,0 +1,25 @@
+- name: Retrieve the details
+  amazon.aws.route53:
+    state: get
+    zone: "{{ZONE}}"
+    record: "{{item.COMPONENT}}.{{ZONE}}"
+    type: A
+    private_zone: true
+  register: r53_var_one
+
+- name: print value
+  ansible.builtin.debug:
+    msg: "{{r53_var_one.resource_record_sets[0].resource_records[0].value}}"
+
+- name: Add a line to a file if the file does not exist
+  ansible.builtin.lineinfile:
+    path: ~/.ssh/config
+    line: |
+      Host {{item.COMPONENT}} {{item.COMPONENT}}.{{ZONE}}
+        HostName {{r53_var_one.resource_record_sets[0].resource_records[0].value}}
+        User centos
+        Port 22
+        IdentityFile ~/.ssh/key.pem
+        StrictHostKeyChecking no
+    create: yes
+    mode: '0600'

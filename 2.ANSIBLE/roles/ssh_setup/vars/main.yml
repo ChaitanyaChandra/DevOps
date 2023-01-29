@@ -1,0 +1,2 @@
+ZONE: chaitu.net
+SSH_KEY: "{{lookup('amazon.aws.aws_secret', 'spec/ssh', region='us-east-1')}}"
