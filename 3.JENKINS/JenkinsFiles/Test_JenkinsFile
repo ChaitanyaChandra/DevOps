@@ -20,6 +20,17 @@ pipeline {
             }
          }
 
+        stage ('ssh setup')
+        {
+            steps
+            {
+            dir('2.ANSIBLE/') {           
+                sh "ansible-playbook spec.yml -e 'HOST=localhost' -e 'ROLE=ssh_setup'"
+                }
+            }
+        }
+
+
         stage ('parallel stage')
         {
             parallel {
@@ -40,16 +51,6 @@ pipeline {
                         sh 'ansible -m ping all'
                         }                         
                     }
-                }
-            }
-        }
-        
-        stage ('application setup')
-        {
-            steps
-            {
-            dir('2.ANSIBLE/') {           
-                sh "ansible-playbook test.yml"
                 }
             }
         }
