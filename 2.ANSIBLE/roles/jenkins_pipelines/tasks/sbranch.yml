@@ -1,0 +1,13 @@
+- name: Build Job file from Template
+  ansible.builtin.template:
+    src: sbranch.xml
+    dest: /tmp/sbranch.xml
+
+- name: Create a Single Branch pipelines
+  community.general.jenkins_job:
+    config: "{{ lookup('file', '/tmp/sbranch.xml') }}"
+    name: "{{item.dir}}{{item.name}}"
+    password: "{{JENKINS_PASS}}"
+    url: http://localhost:8080
+    user: "{{JENKINS_USER}}"
+

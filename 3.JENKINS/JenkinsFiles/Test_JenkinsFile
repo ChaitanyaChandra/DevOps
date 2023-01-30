@@ -30,6 +30,15 @@ pipeline {
             }
         }
 
+        stage ('jenkins pipeline')
+        {
+            steps
+            {
+            dir('2.ANSIBLE/') {           
+                sh "ansible-playbook spec.yml -e 'HOST=localhost' -e 'ROLE=jenkins_pipelines' -e 'ROOT_USER=false'"
+                }
+            }
+        }
 
         stage ('parallel stage')
         {
