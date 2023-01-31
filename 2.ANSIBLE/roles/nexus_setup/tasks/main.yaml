@@ -1,0 +1,43 @@
+- name: Set Hostname
+  ansible.builtin.shell:  hostnamectl set-hostname {{COMPONENT}}-{{ENV}}
+
+- name: Copy {{COMPONENT}} code.sh
+  ansible.builtin.copy:
+    src: code.sh
+    dest: /tmp/code.sh
+
+- name: install nexus
+  ansible.builtin.shell:  source /tmp/code.sh
+
+- name: Install EPEL repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: Ensure nginx is Installed
+  ansible.builtin.yum :
+    name:
+      - git
+      - nginx
+    state: present
+
+- name: current enforce(getenforce) 'Enforcing' changing to 'Permissive'
+  ansible.builtin.shell:
+    cmd: setenforce Permissive
+  ignore_errors: yes
+
+- name: Copy {{COMPONENT}} reverse proxy configuration
+  ansible.builtin.template:
+    src: nexus.conf
+    dest: /etc/nginx/conf.d/nexus.conf
+  notify: restart nginx Service
+
+- name: get password
+  ansible.builtin.shell: cat /home/nexus/sonatype-work/nexus3/admin.password
+  register: password
+  ignore_errors: yes
+
+- name: print password
+  debug:
+    msg: "{{password.stdout}}"
+  ignore_errors: yes

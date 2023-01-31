@@ -12,6 +12,8 @@
   ansible.builtin.include_tasks: r53.yml
   loop: 
     - {'COMPONENT': 'jenkins'}
+    - {'COMPONENT': 'sonar'}
+    - {'COMPONENT': 'jenkins'}
 
 - name: Add a line to a file if the file does not exist
   ansible.builtin.lineinfile:
