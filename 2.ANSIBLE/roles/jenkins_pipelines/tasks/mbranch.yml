@@ -8,6 +8,6 @@
     config: "{{ lookup('file', '/tmp/mbranch.xml') }}"
     name: "ci-pipelines/{{item.name}}"
     password: "{{JENKINS_PASS}}"
-    url: http://{{URL}}
+    url: "{{URL}}"
     user: "{{JENKINS_USER}}"
 
