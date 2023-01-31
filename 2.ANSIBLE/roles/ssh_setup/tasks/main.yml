@@ -13,7 +13,7 @@
   loop: 
     - {'COMPONENT': 'jenkins'}
     - {'COMPONENT': 'sonar'}
-    - {'COMPONENT': 'jenkins'}
+    - {'COMPONENT': 'nexus'}
 
 - name: Add a line to a file if the file does not exist
   ansible.builtin.lineinfile:
