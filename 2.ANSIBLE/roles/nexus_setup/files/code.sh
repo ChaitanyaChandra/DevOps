@@ -1,7 +1,9 @@
 curl -s "https://raw.githubusercontent.com/majorchowdary/scripts/master/common-functions.sh" >/tmp/common-functions.sh
 #source /root/scripts/common-functions.sh
 source /tmp/common-functions.sh
-
+userdel nexus -r || true
+systemctl disable nexus  &>/dev/null || true
+service nexus stop || true
 which java &>/dev/null
 if [ $? -ne 0 ]; then
 	## Downloading Java
@@ -58,8 +60,8 @@ unlink /etc/init.d/nexus &>/dev/null
 ln -s /home/nexus/$NEXUSDIR/bin/nexus /etc/init.d/nexus
 echo "run_as_user=nexus" >/home/nexus/$NEXUSDIR/bin/nexus.rc
 success "Updating System Configuration"
-systemctl enable nexus &>/dev/null
-systemctl start nexus
+service enable nexus &>/dev/null
+service nexus start
 if [ $? -eq 0 ]; then
 	success "Starting Nexus Service"
 else

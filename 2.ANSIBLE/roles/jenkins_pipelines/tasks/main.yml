@@ -3,7 +3,7 @@
     config: "{{ lookup('file', 'templates/folder.xml') }}"
     name: "{{item.name}}"
     password: "{{JENKINS_PASS}}"
-    url: http://localhost:8080
+    url: http://{{URL}}
     user: "{{JENKINS_USER}}"
   loop:
     - { name: "ci-pipelines"}
