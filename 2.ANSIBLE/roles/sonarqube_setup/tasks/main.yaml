@@ -21,7 +21,7 @@
 
 - name: Download and UnZip the {{COMPONENT}} Content
   ansible.builtin.unarchive:
-    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.8.54436.zip
+    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.1.0.47736.zip
     dest: /home/{{ COMPONENT }}/ # already existing path
 #    creates: /home/{{ COMPONENT }}/sonarqube/bin/linux-x86-64/sonar.sh  # some path to make sure that the archive has already been unpacked
     remote_src: yes
