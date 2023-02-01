@@ -46,7 +46,7 @@
       "delete_on_termination": true
     },
     "ebs_optimized": false,
-    "ena_support": false,
+    "ena_support": true,
     "force_delete_snapshot": true,
     "encrypt_boot": false,
     "run_tags": {
