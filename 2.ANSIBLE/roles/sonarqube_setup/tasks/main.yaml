@@ -27,7 +27,7 @@
     remote_src: yes
 
 - name: remove sonarqube verison
-  shell: "rm -rf /home/{{ COMPONENT }}/sonarqube/ ; mv  /home/{{ COMPONENT }}/sonarqube-8.9.8.54436 /home/{{ COMPONENT }}/sonarqube"
+  shell: "rm -rf /home/{{ COMPONENT }}/sonarqube/ ; mv  /home/{{ COMPONENT }}/sonarqube-9.1.0.47736 /home/{{ COMPONENT }}/sonarqube"
 
 - name: Change file ownership, group and permissions
   ansible.builtin.file:
