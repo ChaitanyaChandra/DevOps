@@ -1,3 +1,6 @@
+#!/bin/bash
+
+echo "Bootstrap script..."
 yum install wget tar git -y
 
 sudo yum -y groupinstall "Development Tools"
@@ -14,5 +17,7 @@ alias python='/usr/bin/python3'
 python -m pip install --upgrade pip
 cd .. ; sudo rm Python-3.8.12.tgz
 
-yum install git -y
 python3 -m pip install ansible botocore boto3 python-jenkins
+
+#network tools
+yum -y install bind-utils mtr nc nmap traceroute
