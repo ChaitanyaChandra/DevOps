@@ -11,7 +11,7 @@ def codeQuality() {
       sh '''
         # sh "sonar-scanner -Dsonar.projectKey=${PROJECT} -Dsonar.sources=. -Dsonar.host.url=https://sonar.chaitu.net -Dsonar.login=${USER} -Dsonar.password=${PASSWORD}"
         # sh "sonar-quality-gate.sh ${USER} ${PASSWORD} ${URL} ${PROJECT}"
-       sonar-scanner -Dsonar.host.url=https://sonar.chaitu.net:443 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true
+       sonar-scanner -Dsonar.host.url=sonar.chaitu.net:443 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true
         # echo OK
       '''
     }
