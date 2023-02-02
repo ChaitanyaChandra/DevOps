@@ -21,11 +21,11 @@
 - name: Setup terraform repo
   shell: python3 -m pip install awscli
 
-- name:  Copy sonar quality gate script
-  file: 
+- name: Copy sonar scanner Content
+  ansible.builtin.copy:
     src: sonar-quality-gate.sh 
     dest: /bin/sonar-quality-gate.sh
-    state: hard
+    remote_src: no
     mode: '0400'
 
 
