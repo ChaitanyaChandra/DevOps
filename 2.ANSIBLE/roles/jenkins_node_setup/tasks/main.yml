@@ -25,7 +25,6 @@
   file: 
     src: sonar-quality-gate.sh 
     dest: /bin/sonar-quality-gate.sh
-    remote_src: no
     mode: '0400'
 
 
