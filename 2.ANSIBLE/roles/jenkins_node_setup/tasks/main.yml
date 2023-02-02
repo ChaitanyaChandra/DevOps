@@ -22,7 +22,9 @@
   shell: python3 -m pip install awscli
 
 - name:  Copy sonar quality gate script
-  template: src=sonar-quality-gate.sh dest=/bin/sonar-quality-gate.sh
+  template: 
+    src: sonar-quality-gate.sh 
+    dest: /bin/sonar-quality-gate.sh
   mode: '0400'
 
 
