@@ -9,7 +9,9 @@ def codeQuality() {
   stage('Code Quality') {
     withCredentials([usernamePassword(credentialsId: 'APP_CREDS', passwordVariable: 'sonarPass', usernameVariable: 'sonarUser')]) {
       sh '''
-        sonar-scanner -Dsonar.host.url=http://sonar.chaitu.net:9000 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true
+        # sh "sonar-scanner -Dsonar.projectKey=${PROJECT} -Dsonar.sources=. -Dsonar.host.url=https://sonar.chaitu.net -Dsonar.login=${USER} -Dsonar.password=${PASSWORD}"
+        # sh "sonar-quality-gate.sh ${USER} ${PASSWORD} ${URL} ${PROJECT}"
+       sonar-scanner -Dsonar.host.url=http://sonar.chaitu.net:9000 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true
         # echo OK
       '''
     }
