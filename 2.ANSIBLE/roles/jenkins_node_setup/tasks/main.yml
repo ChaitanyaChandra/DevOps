@@ -25,6 +25,7 @@
   file: 
     src: sonar-quality-gate.sh 
     dest: /bin/sonar-quality-gate.sh
+    state: hard
     mode: '0400'
 
 
