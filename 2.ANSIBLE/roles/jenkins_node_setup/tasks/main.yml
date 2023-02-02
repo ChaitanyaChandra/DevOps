@@ -25,7 +25,8 @@
   file: 
     src: sonar-quality-gate.sh 
     dest: /bin/sonar-quality-gate.sh
-  mode: '0400'
+    remote_src: no
+    mode: '0400'
 
 
 - name: Download and UnZip the sonar scanner plugin
