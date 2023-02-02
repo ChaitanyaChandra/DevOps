@@ -1,0 +1,45 @@
+- name: Setup NodeJs repo
+  shell: curl -sL https://rpm.nodesource.com/setup_16.x | bash -
+
+- name: Setup terraform repo
+  shell: yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+
+- name: Install dependencies 
+  ansible.builtin.yum:
+    name:
+      - unzip
+      - nodejs
+      - java-11-openjdk
+      - zip 
+      - wget
+      - epel-release
+      - jq
+      - yum-utils
+      - terraform
+    state: present
+
+- name: Setup terraform repo
+  shell: python3 -m pip install awscli
+
+- name:  Copy sonar quality gate script
+  template: src=sonar-quality-gate.sh dest=/bin/sonar-quality-gate.sh
+  mode: '0400'
+
+
+- name: Download and UnZip the sonar scanner plugin
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Copy sonar scanner Content
+  ansible.builtin.copy:
+    src: /tmp/sonar-scanner-4.5.0.2216-linux/
+    dest: /opt/sonar/
+    remote_src: yes
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: /opt/sonar/bin/sonar-scanner
+    dest: /bin/sonar-scanner
+    state: link
