@@ -47,8 +47,7 @@ def codeQuality() {
     sh """
     git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
     # delete branch locally
-    git checkout ${env.BRANCH_NAME}
-    git branch -d ${env.BRANCH_NAME}
+    # git branch -d ${env.BRANCH_NAME}
 
     # delete branch remotely
     git push origin --delete ${env.BRANCH_NAME}
