@@ -17,13 +17,10 @@ def codeQuality() {
 
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
     stage('merge to master') {
-    String branchName = env.BRANCH_NAME
-    String gitCredentials = "GIT_CREDS"
-    String repoUrl = "https://github.com/chaitanyachandra/${COMPONENT}.git"
-    // withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
-    
-    git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
+    withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
+    git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
+
     git checkout main
     
     # Fetch the latest changes from the remote repository
@@ -35,7 +32,7 @@ def codeQuality() {
     # Push the merged changes back to the remote repository
     git push origin main
     """     
-      // }
+      }
     }
   }
 
