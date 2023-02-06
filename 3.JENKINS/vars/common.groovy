@@ -16,23 +16,25 @@ def codeQuality() {
   }
 
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
-    stage('merge to master') {
+    stage('PR TO master') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
     # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
     git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
-    git checkout main
+    git request-pull main https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git ${env.BRANCH_NAME}
+
+    # git checkout main
     
     # Fetch the latest changes from the remote repository
-    git fetch origin
+    # git fetch origin
 
     # Merge the changes from the feature branch
-    git merge origin/${env.BRANCH_NAME}
+    # git merge origin/${env.BRANCH_NAME}
 
     # Push the merged changes back to the remote repository
-    git push origin main
+    # git push origin main
     """     
       }
     }
