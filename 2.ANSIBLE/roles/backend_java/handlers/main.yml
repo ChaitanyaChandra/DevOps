@@ -1,0 +1,6 @@
+- name: restart Service
+  systemd:
+    name: "{{ item.service }}"
+    state: 'restarted'
+  loop:
+    - { service: 'rsyslog' }

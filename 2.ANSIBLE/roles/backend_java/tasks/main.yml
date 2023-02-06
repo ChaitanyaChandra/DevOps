@@ -1,20 +1,14 @@
-- name: Setup NodeJs repo
-  shell: curl -sL https://rpm.nodesource.com/setup_16.x | bash -
-
-- name: Install dependencies 
+- name: Install Java & mvn
   ansible.builtin.yum:
-    name:
-      - unzip
-      - nodejs
-    state: present
+    name: 
+      - java
+      - maven
+    state: installed
 
 - name: Application User Setup and Download App Files
   import_tasks: app-user-setup.yml
 
-#- name: Install packages based on package.json.
-#  community.general.npm:
-#    path: /home/{{USER}}/{{COMPONENT}}
-#  become_user: "{{USER}}"
+
 
 - name:  Copy {{COMPONENT}} filebeat and rsyslog config
   template: src={{ item.src }} dest={{ item.dest }}

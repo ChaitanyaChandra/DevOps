@@ -2,21 +2,21 @@
   block:
     - name: Download and UnZip the Application Content
       ansible.builtin.unarchive:
-        src: https://github.com/ChaitanyaChandra/app/archive/main.zip
+        src: https://github.com/ChaitanyaChandra/status-app/archive/main.zip
         dest: /tmp
         remote_src: yes
 
     - name: Copy App Content
       ansible.builtin.copy:
-        src: /tmp/app-main/
+        src: /tmp/status-app-main/
         dest: /home/{{USER}}/{{COMPONENT}}/
         remote_src: yes
       become_user: "{{USER}}"
 
-    - name: Install packages based on package.json.
-      shell: npm install
+    - name: Install Maven Dependencies
+      ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
       args:
-        chdir: "/home/{{USER}}/{{COMPONENT}}"
+        chdir: /home/{{USER}}/{{COMPONENT}}/
       become_user: "{{USER}}"
     when: GIT_DOWNLOAD is defined
 

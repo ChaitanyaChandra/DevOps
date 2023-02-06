@@ -1,0 +1,25 @@
+- name: Add Application User
+  ansible.builtin.user:
+    name: "{{USER}}"
+  register: app_user_info
+
+## This is been added for deployment purpose , For first time when component is setup then it might fail, So lets ignore the failure
+- name: Stop {{COMPONENT}} Service
+  ansible.builtin.systemd:
+    name: "{{COMPONENT}}"
+    state: stopped
+  ignore_errors: yes
+
+- name: Remove Old App Content
+  ansible.builtin.file:
+    path: /home/{{USER}}/{{COMPONENT}}
+    state: absent
+
+- name: Create App Dir
+  ansible.builtin.file:
+    path: /home/{{USER}}/{{COMPONENT}}
+    state: directory
+  become_user: "{{USER}}"
+
+- name: download application data
+  import_tasks: download.yml
