@@ -1,3 +1,4 @@
 USER: java-app-user
 COMPONENT: status
 GIT_DOWNLOAD: yes
+URL: http://localhost:8080
