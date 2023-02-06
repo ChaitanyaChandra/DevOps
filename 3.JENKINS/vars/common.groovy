@@ -17,7 +17,9 @@ def codeQuality() {
 
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME != ".*" ) {
     stage('merge TO main') {
-    echo env
+    for(e in env){
+    echo e + " is " + ${e}
+    }
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
     # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
