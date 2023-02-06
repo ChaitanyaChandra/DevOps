@@ -16,7 +16,7 @@ def codeQuality() {
   }
 
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
-    stage('PR TO master') {
+    stage('merge TO main') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
     # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
