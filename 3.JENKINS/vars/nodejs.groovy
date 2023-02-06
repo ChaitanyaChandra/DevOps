@@ -2,9 +2,7 @@ def call() {
   env.APPTYPE = "nodejs"
   node {
     // try {
-      for(e in env){
-        echo e + " is " + ${e}
-      }
+      echo "env"
       common.codeCheckout()
       common.codeQuality()
       common.codeChecks()
