@@ -9,14 +9,20 @@ def codeQuality() {
   stage('Code Quality') {
     withCredentials([usernamePassword(credentialsId: 'APP_CREDS', passwordVariable: 'sonarPass', usernameVariable: 'sonarUser')]) {
       sh '''
-       sonar-scanner -Dsonar.host.url=http://sonar.chaitu.net:9000 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true ${SONAR_EXTRA_OPTS}
+       echo "codequality"
+       # sonar-scanner -Dsonar.host.url=http://sonar.chaitu.net:9000 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true ${SONAR_EXTRA_OPTS}
       '''
     }
   }
 
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
     stage('merge to master') {
-    withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
+    String branchName = env.BRANCH_NAME
+    String gitCredentials = "GIT_CREDS"
+    String repoUrl = "https://github.com/chaitanyachandra/${COMPONENT}.git"
+    // withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
+    
+    git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
     sh """
     git checkout main
     
@@ -29,7 +35,7 @@ def codeQuality() {
     # Push the merged changes back to the remote repository
     git push origin main
     """     
-      }
+      // }
     }
   }
 
