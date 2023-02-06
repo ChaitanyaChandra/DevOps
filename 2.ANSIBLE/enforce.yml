@@ -6,4 +6,4 @@
     - name: disable SElinux temperoraly
       ansible.builtin.shell:
         cmd: setenforce Permissive
-      ignore_erros: true
+      ignore_errors: yes
