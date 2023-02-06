@@ -26,26 +26,26 @@ def codeChecks() {
       echo 'Unit Tests'
     }
 
-    // if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
-    //   stage('merge to master') {
-    //   withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
-    //   sh '''
-    //   credentialsId: 'GIT_CREDS',
+    if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
+      stage('merge to master') {
+      withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
+      sh '''
+      credentialsId: 'GIT_CREDS',
 
-    //   git checkout main
+      git checkout main
       
-    //   # Fetch the latest changes from the remote repository
-    //   git fetch origin
+      # Fetch the latest changes from the remote repository
+      git fetch origin
 
-    //   # Merge the changes from the feature branch
-    //   git merge origin/${env.BRANCH_NAME}
+      # Merge the changes from the feature branch
+      git merge origin/${env.BRANCH_NAME}
 
-    //   # Push the merged changes back to the remote repository
-    //   git push origin main
-    //   '''       
-    //     }
-    //   }
-    // }
+      # Push the merged changes back to the remote repository
+      git push origin main
+      '''       
+        }
+      }
+    }
 
   }
 }
