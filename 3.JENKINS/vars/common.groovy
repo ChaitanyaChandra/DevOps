@@ -17,7 +17,7 @@ def codeQuality() {
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
     stage('merge to master') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
-    sh '''
+    sh """
     git checkout main
     
     # Fetch the latest changes from the remote repository
@@ -28,7 +28,7 @@ def codeQuality() {
 
     # Push the merged changes back to the remote repository
     git push origin main
-    '''       
+    """     
       }
     }
   }
