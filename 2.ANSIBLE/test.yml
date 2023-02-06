@@ -1,9 +1,15 @@
 ---
-- name: install application 
+- name: install nodejs application 
   hosts: test
   become: yes
   roles: 
-    - "backend-nodejs"
+    - "backend_nodejs"
+
+- name: install java application 
+  hosts: test
+  become: yes
+  roles: 
+    - "backend_java"
 
 - name: configure datadog for application 
   hosts: test
