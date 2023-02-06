@@ -23,7 +23,7 @@ def codeQuality() {
 
     git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
-    git request-pull main https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git ${env.BRANCH_NAME}
+    git request-pull ${env.BRANCH_NAME} https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git main
 
     # git checkout main
     
