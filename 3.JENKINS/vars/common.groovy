@@ -21,6 +21,8 @@ def codeQuality() {
     sh """
     # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
+    git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
+
     git checkout main
     
     # Fetch the latest changes from the remote repository
