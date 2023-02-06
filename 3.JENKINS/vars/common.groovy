@@ -18,8 +18,6 @@ def codeQuality() {
     stage('merge to master') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh '''
-    credentialsId: 'GIT_CREDS',
-
     git checkout main
     
     # Fetch the latest changes from the remote repository
