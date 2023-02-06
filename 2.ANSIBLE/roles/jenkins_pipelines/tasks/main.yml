@@ -13,6 +13,7 @@
   ansible.builtin.include_tasks: mbranch.yml
   loop:
     - { name: "node-app"}
+    - { name: "java-app"}
 
 # - name: Include Single Branch task file
 #   ansible.builtin.include_tasks: sbranch.yml

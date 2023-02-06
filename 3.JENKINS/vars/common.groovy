@@ -40,12 +40,14 @@ def artifacts() {
         '''
       }
 
-      if (env.APPTYPE == "nginx") {
+
+      if (env.APPTYPE == "java") {
         sh '''
-          #cd static
-          zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+          mvn clean package 
+          mv target/status-1.0-SNAPSHOT.jar ${COMPONENT}.jar 
+          zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
         '''
-      }
+      }      
     }
 
     // stage('Build Docker Image') {
