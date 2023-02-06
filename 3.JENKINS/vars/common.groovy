@@ -46,10 +46,10 @@ def codeQuality() {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
     git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
-    // delete branch locally
+    # delete branch locally
     git branch -d ${env.BRANCH_NAME}
 
-    // delete branch remotely
+    # delete branch remotely
     git push origin --delete ${env.BRANCH_NAME}
     """
       }
