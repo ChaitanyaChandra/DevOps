@@ -42,7 +42,7 @@ def codeQuality() {
   }
 
   if ( env.BRANCH_NAME != "main" || env.BRANCH_NAME != "dev" ) {
-    
+    stage('Delete branch') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
     git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
@@ -52,6 +52,7 @@ def codeQuality() {
     // delete branch remotely
     git push origin --delete ${env.BRANCH_NAME}
     """
+      }
     }
   }
 
