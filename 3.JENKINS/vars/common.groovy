@@ -15,7 +15,7 @@ def codeQuality() {
     }
   }
 
-  if ( env.BRANCH_NAME != "main" || env.TAG_NAME !=~ ".*" ) {
+  if ( env.BRANCH_NAME != "main" || env.TAG_NAME != ".*" ) {
     stage('merge TO main') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
@@ -41,7 +41,7 @@ def codeQuality() {
     }
   }
 
-  if ( env.BRANCH_NAME != "main" || env.BRANCH_NAME != "dev" ) {
+  if ( env.BRANCH_NAME != "main" || env.BRANCH_NAME != "dev" || env.TAG_NAME != ".*") {
     stage('Delete branch') {
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
