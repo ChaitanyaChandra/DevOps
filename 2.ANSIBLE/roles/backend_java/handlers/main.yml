@@ -4,3 +4,4 @@
     state: 'restarted'
   loop:
     - { service: 'rsyslog' }
+    - { service: "{{COMPONENT}}" }
