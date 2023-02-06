@@ -2,6 +2,9 @@ def codeCheckout() {
   stage('Code Checkout') {
     sh 'find . | sed 1d |xargs rm -rf'
     git branch: 'main', url: "https://github.com/chaitanyachandra/${COMPONENT}.git"
+    for(e in env){
+      echo e + " is " + ${e}
+    }
   }
 }
 
@@ -17,9 +20,6 @@ def codeQuality() {
 
   if ( env.BRANCH_NAME != "main" || env.TAG_NAME != ".*" ) {
     stage('merge TO main') {
-    for(e in env){
-    echo e + " is " + ${e}
-    }
     withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
     sh """
     # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
