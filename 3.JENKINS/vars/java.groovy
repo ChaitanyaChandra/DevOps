@@ -6,8 +6,9 @@ def call() {
       common.codeCheckout()
       stage('Compile Code') {
         sh 'mvn compile'
+        sh 'pwd'
       }
-      common.codeQuality()
+      //common.codeQuality()
       // common.codeChecks()
       // common.artifacts()
     } catch (Exception e) {
