@@ -1,12 +1,13 @@
 [Unit]
-Description = {{COMPONENT}} Service
+Description = {{COMPONENT}} app Service
 
 [Service]
 User={{USER}}
-ExecStart=/bin/java -Xms2900m -Xmx3300m -jar /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}.jar
+ExecStart=/bin/java -Xms2900m -Xmx3300m -jar /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}-1.0-SNAPSHOT.jar
 SyslogIdentifier={{COMPONENT}}
 # WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
-Environment="MONGO_ENDPOINT=mongodb+srv://{{DB_USER}}:{{DB_PASS}}@{{DB_URL}}/login-app-db?retryWrites=true&w=majority"
+Environment="URL=http://localhost:8080"
+# Environment="MONGO_ENDPOINT=mongodb+srv://{{DB_USER}}:{{DB_PASS}}@{{DB_URL}}/login-app-db?retryWrites=true&w=majority"
 # StandardOutput=syslog
 # StandardError=syslog
 

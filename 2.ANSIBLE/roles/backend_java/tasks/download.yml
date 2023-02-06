@@ -14,7 +14,7 @@
       become_user: "{{USER}}"
 
     - name: Install Maven Dependencies
-      ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+      ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0-SNAPSHOT.jar {{COMPONENT}}.jar
       args:
         chdir: /home/{{USER}}/{{COMPONENT}}/
       become_user: "{{USER}}"
