@@ -7,7 +7,7 @@ def call() {
       stage('Compile Code') {
         sh 'mvn compile'
       }
-      //common.codeQuality()
+      common.codeQuality()
       // common.codeChecks()
       // common.artifacts()
     } catch (Exception e) {
