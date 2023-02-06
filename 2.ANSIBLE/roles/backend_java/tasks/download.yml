@@ -18,7 +18,7 @@
       args:
         chdir: /home/{{USER}}/{{COMPONENT}}/
       become_user: "{{USER}}"
-    when: GIT_DOWNLOAD is defined
+  when: GIT_DOWNLOAD is defined
 
 # - name: when GIT_DOWNLOAD is not defined
 #   block:
