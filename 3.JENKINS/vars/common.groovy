@@ -23,18 +23,19 @@ def codeQuality() {
 
     git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
-    git request-pull origin/main ${env.BRANCH_NAME}
+    # for PR
+    # git request-pull origin/main ${env.BRANCH_NAME}
 
-    # git checkout main
+    git checkout main
     
     # Fetch the latest changes from the remote repository
-    # git fetch origin
+    git fetch origin
 
     # Merge the changes from the feature branch
-    # git merge origin/${env.BRANCH_NAME}
+    git merge origin/${env.BRANCH_NAME}
 
     # Push the merged changes back to the remote repository
-    # git push origin main
+    git push origin main
     """     
       }
     }
