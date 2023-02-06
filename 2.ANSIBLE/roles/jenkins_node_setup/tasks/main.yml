@@ -16,6 +16,8 @@
       - jq
       - yum-utils
       - terraform
+      - java
+      - maven
     state: present
 
 - name: Setup terraform repo
