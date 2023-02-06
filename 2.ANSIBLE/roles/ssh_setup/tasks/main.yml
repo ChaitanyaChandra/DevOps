@@ -14,6 +14,7 @@
     - {'COMPONENT': 'jenkins'}
     - {'COMPONENT': 'sonar'}
     - {'COMPONENT': 'nexus'}
+    - {'COMPONENT': 'app'}
 
 - name: Add a line to a file if the file does not exist
   ansible.builtin.lineinfile:
