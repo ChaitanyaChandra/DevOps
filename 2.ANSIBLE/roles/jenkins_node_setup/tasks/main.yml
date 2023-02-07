@@ -19,11 +19,9 @@
       - java-11-openjdk
       - zip 
       - wget
-      - epel-release
       - jq
       - yum-utils
       - terraform
-      - java
       - maven
     state: present
 
