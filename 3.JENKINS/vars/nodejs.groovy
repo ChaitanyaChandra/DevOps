@@ -1,8 +1,7 @@
 def call() {
   env.APPTYPE = "nodejs"
-  node {
+  node (env.RUNNER){
     // try {
-      echo "env"
       common.codeCheckout()
       common.codeQuality()
       common.codeChecks()
