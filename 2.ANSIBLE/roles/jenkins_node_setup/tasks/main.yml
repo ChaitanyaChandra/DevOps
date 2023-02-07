@@ -4,6 +4,13 @@
 - name: Setup terraform repo
   shell: yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 
+
+- name: Install epel release 
+  ansible.builtin.yum:
+    name:
+      - epel-release
+    state: present
+
 - name: Install dependencies 
   ansible.builtin.yum:
     name:
