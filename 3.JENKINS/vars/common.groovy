@@ -15,46 +15,46 @@ def codeQuality() {
     }
   }
 
-  if ( env.BRANCH_NAME != "main" || env.TAG_NAME != ".*" ) {
-    stage('merge TO main') {
-    withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
-    sh """
-    # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
+  // if ( env.BRANCH_NAME != "main" || env.TAG_NAME != ".*" ) {
+  //   stage('merge TO main') {
+  //   withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
+  //   sh """
+  //   # git remote add origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
-    git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
+  //   git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
 
-    # for PR
-    # git request-pull origin/main ${env.BRANCH_NAME}
+  //   # for PR
+  //   # git request-pull origin/main ${env.BRANCH_NAME}
 
-    git checkout main
+  //   git checkout main
     
-    # Fetch the latest changes from the remote repository
-    git fetch origin
+  //   # Fetch the latest changes from the remote repository
+  //   git fetch origin
 
-    # Merge the changes from the feature branch
-    git merge origin/${env.BRANCH_NAME}
+  //   # Merge the changes from the feature branch
+  //   git merge origin/${env.BRANCH_NAME}
 
-    # Push the merged changes back to the remote repository
-    git push origin main
-    """     
-      }
-    }
-  }
+  //   # Push the merged changes back to the remote repository
+  //   git push origin main
+  //   """     
+  //     }
+  //   }
+  // }
 
-  if ( env.BRANCH_NAME != "main" || env.BRANCH_NAME != "dev" || env.TAG_NAME != ".*") {
-    stage('Delete branch') {
-    withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
-    sh """
-    git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
-    # delete branch locally
-    # git branch -d ${env.BRANCH_NAME}
+  // if ( env.BRANCH_NAME != "main" || env.BRANCH_NAME != "dev" || env.TAG_NAME != ".*") {
+  //   stage('Delete branch') {
+  //   withCredentials([usernamePassword(credentialsId: 'GIT_CREDS', passwordVariable: 'gitPass', usernameVariable: 'gitUser')]){
+  //   sh """
+  //   git remote set-url origin https://${gitUser}:${gitPass}@github.com/chaitanyachandra/${COMPONENT}.git
+  //   # delete branch locally
+  //   # git branch -d ${env.BRANCH_NAME}
 
-    # delete branch remotely
-    git push origin --delete ${env.BRANCH_NAME}
-    """
-      }
-    }
-  }
+  //   # delete branch remotely
+  //   git push origin --delete ${env.BRANCH_NAME}
+  //   """
+  //     }
+  //   }
+  // }
 
 }
 
