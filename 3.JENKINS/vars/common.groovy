@@ -12,6 +12,7 @@ def codeQuality() {
        echo "codequality"
        sonar-scanner -Dsonar.host.url=http://sonar.chaitu.net:9000 -Dsonar.login=${sonarUser} -Dsonar.password=${sonarPass} -Dsonar.projectKey=${COMPONENT} -Dsonar.qualitygate.wait=true ${SONAR_EXTRA_OPTS}
       '''
+      mail bcc: '', body: "Build Failed ${RUN_DISPLAY_URL}", cc: '', from: 'email@chaitu.net', replyTo: '', subject: 'BUILD FAILURE', to: 'majorchowdary@gmail.com'
     }
   }
 
