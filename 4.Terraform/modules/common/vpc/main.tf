@@ -1,0 +1,3 @@
+output "running" {
+  value = "HelloWorld"
+}
