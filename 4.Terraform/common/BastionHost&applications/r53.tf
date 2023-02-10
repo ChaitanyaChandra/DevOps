@@ -14,5 +14,5 @@ resource "aws_route53_record" "route" {
   name    = "${local.instance_types[count.index]}.${var.domain}"
   type    = "A"
   ttl     = 60
-  records = aws_spot_instance_request.vm[count.index].public_ip
+  records = "${aws_spot_instance_request.vm.${count.index}.public_ip}"
 }
