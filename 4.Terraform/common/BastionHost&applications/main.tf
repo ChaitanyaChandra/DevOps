@@ -56,6 +56,7 @@ resource "aws_spot_instance_request" "vm" {
     volume_size = "10"
     volume_type = "gp2"
   }
+  instance_type = "t2.medium"
   wait_for_fulfillment = true
 
   provisioner "remote-exec" {
