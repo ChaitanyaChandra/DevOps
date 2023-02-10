@@ -7,10 +7,8 @@ resource "aws_key_pair" "deployer" {
 
 locals {
   # tags_dest      = ["instance", "volume", "network-interface", "spot--request"]
-#  instance_types = ["workstation", "jenkins", "sonar", "nexus"]
-#  roles = ["jenkins_node_setup", "jenkins_setup", "sonarqube_setup", "nexus_setup"]
-  instance_types = ["workstation"]
-  roles = ["jenkins_node_setup"]
+  instance_types = ["workstation", "jenkins", "sonar", "nexus"]
+  roles = ["jenkins_node_setup", "jenkins_setup", "sonarqube_setup", "nexus_setup"]
 }
 
 resource "aws_iam_role" "admin" {
