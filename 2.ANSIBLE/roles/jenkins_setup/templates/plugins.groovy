@@ -18,6 +18,7 @@ final List<String> REQUIRED_PLUGINS = [
         "ansicolor", // color the output
         "aws-secrets-manager-credentials-provider",
         "badge", // custom badges in jenkins
+        "thinBackup", // backup plugin
 ]
 
 

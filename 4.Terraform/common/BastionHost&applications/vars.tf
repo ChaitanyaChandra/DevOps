@@ -20,3 +20,8 @@ variable "TFC_WORKSPACE_NAME" {
   default     = "chaitu-dev"
   description = "WORKSPACE NAME imported from tfe"
 }
+
+variable "domain" {
+  type    = string
+  default = "chaitu.net"
+}

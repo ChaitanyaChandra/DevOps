@@ -1,4 +1,4 @@
-USER_NAME : chaitu
+USER_NAME : admin
 PASSWORD: "@123Chaitu"
 apps:
   - jenkins
