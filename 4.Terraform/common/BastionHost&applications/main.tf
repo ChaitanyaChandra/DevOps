@@ -45,6 +45,7 @@ resource "aws_iam_instance_profile" "profile" {
 }
 
 resource "aws_spot_instance_request" "vm" {
+  count = length(local.instance_types)
   key_name = aws_key_pair.deployer.key_name
   ami = "ami-07acf41a58c76cc08"
   iam_instance_profile = aws_iam_instance_profile.profile.name
