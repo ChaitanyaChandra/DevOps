@@ -12,14 +12,6 @@ resource "cloudflare_record" "record" {
   proxied = true
 }
 
-terraform {
-  required_providers {
-    cloudflare = {
-      source  = "cloudflare/cloudflare"
-    }
-  }
-}
-
 provider "cloudflare" {
   api_token = "aiRxpo3xooOe_5LAM4bfq9hy_SnvFvyA4IO4XNKZ"
 }
