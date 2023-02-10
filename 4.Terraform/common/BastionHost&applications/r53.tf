@@ -20,3 +20,7 @@ resource "aws_route53_zone" "dns" {
 output "value" {
   value = aws_spot_instance_request.vm.*.public_ip
 }
+
+output "workstation_ip" {
+  value = aws_spot_instance_request.vm.*.public_ip[0]
+}
