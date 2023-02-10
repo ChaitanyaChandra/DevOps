@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the backup directory
-BACKUP_DIR=~/jenkins-backups
+BACKUP_DIR=/home/centos/jenkins-backups
 
 # Create the backup directory if it does not exist
 if [ ! -d "$BACKUP_DIR" ]; then
@@ -16,6 +16,7 @@ BACKUP_FILE=$BACKUP_DIR/jenkins-config-$DATE.tar.gz
 
 # Backup only the Jenkins configuration directory
 tar -czf $BACKUP_FILE /var/lib/jenkins/config.xml /var/lib/jenkins/hudson.model.* /var/lib/jenkins/users
+chown centos:centos $BACKUP_DIR -R
 
 # Print a message indicating that the backup is complete
-echo "Jenkins configuration backup complete: $BACKUP_FILE"
+echo "Jenkins configuration backup complete: $BACKUP_FILE use 'scp jenkins:~/jenkins-backups/* .' to copy all files to local server"
