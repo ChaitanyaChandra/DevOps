@@ -1,5 +1,5 @@
 locals {
-  secret_types = ["sp/keys", "sp/ssh"]
+  secret_types = ["spec/ssh", "spec/keys"]
 }
 
 resource "aws_secretsmanager_secret" "secret" {
@@ -11,5 +11,5 @@ resource "aws_secretsmanager_secret" "secret" {
 resource "aws_secretsmanager_secret_version" "example" {
   count = length(local.secret_types)
   secret_id     = aws_secretsmanager_secret.secret.*.id[count.index]
-  secret_string = count.index == 0 ? file("~/.ssh/id_rsa") : base64decode(var.dd)
+  secret_string = count.index == 0 ? file("~/.sshkeys/id_rsa") : base64decode(var.dd)
 }
