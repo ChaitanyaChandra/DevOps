@@ -63,7 +63,7 @@ resource "aws_spot_instance_request" "vm" {
       timeout     = "4m"
       type        = "ssh"
       user        = "centos"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("~/.sshkeys/id_rsa")
       host     = self.public_ip
 
     }
