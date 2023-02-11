@@ -1,5 +1,4 @@
-USER_NAME : admin
-PASSWORD: "@123Chaitu"
+KEYS : "{{lookup('amazon.aws.aws_secret', 'spec/keys', region='us-east-1')}}"
 apps:
   - jenkins
   - nginx

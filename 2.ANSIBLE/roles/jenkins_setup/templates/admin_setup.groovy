@@ -7,8 +7,8 @@ import hudson.security.*
 
 println "--> creating admin user"
 
-def adminUsername = "{{ USER_NAME }}"
-def adminPassword = "{{ PASSWORD }}"
+def adminUsername = "{{ KEYS.APP_USER }}"
+def adminPassword = "{{ KEYS.APP_PASS }}"
 
 
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
