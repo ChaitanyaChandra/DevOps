@@ -1,0 +1,11 @@
+- name: Download and UnZip the sonar scanner plugin
+  ansible.builtin.unarchive:
+    src: backup.tar.gz
+    dest: /tmp
+#    remote_src: yes
+
+#- name: Copy sonar scanner Content
+#  ansible.builtin.copy:
+#    src: /tmp/var/
+#    dest: /opt/sonar/
+#    remote_src: yes
