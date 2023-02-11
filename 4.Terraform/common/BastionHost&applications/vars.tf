@@ -25,3 +25,10 @@ variable "domain" {
   type    = string
   default = "chaitu.net"
 }
+
+variable "dd" {
+  default = <<EOF
+ewogICJhZG1pbiI6ICJAMTIzQ2hhaXR1IiwKICAiRERfQVBJX0tFWSI6ICIxZmUwNjU1MWYzNWNj
+ZjdjZjIyNWZhOWJmYjk1ZDVmMSIKfQo=
+EOF
+}

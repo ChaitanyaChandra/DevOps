@@ -1,7 +1,8 @@
 # key pair
+# mkdir ~/.sshkeys/ ; ssh-keygen  -t  rsa -C "$HOSTNAME" -f "$HOME/.sshkeys/id_rsa" -P ""
 resource "aws_key_pair" "deployer" {
   key_name   = "aws_key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("~/.sshkeys/id_rsa.pub")
   tags       = local.tags
 }
 
