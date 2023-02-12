@@ -1,0 +1,4 @@
+APP_KEYS : "{{lookup('amazon.aws.aws_secret', 'spec/keys', region='us-east-1')}}"
+SSH_KEYS : "{{lookup('amazon.aws.aws_secret', 'spec/ssh', region='us-east-1')}}"
+secret_description : "secret"
+URL: https://jenkins.chaitu.net

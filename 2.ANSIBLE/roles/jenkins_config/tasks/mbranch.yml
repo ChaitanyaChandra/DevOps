@@ -7,7 +7,7 @@
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/mbranch.xml') }}"
     name: "ci-pipelines/{{item.name}}"
-    password: "{{JENKINS_PASS}}"
+    password: "{{APP_KEYS.APP_PASS}}"
     url: "{{URL}}"
-    user: "{{JENKINS_USER}}"
+    user: "{{APP_KEYS.APP_USER}}"
 
