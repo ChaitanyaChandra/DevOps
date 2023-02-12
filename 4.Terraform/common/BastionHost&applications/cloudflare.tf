@@ -21,5 +21,5 @@ terraform {
 }
 
 provider "cloudflare" {
-  api_token = var.cloudflare_api
+  api_token = base64decode(var.cloudflare_api)
 }
