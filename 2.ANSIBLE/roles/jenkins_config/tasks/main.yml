@@ -1,29 +1,29 @@
-- name: Create Folders
-  community.general.jenkins_job:
-    config: "{{ lookup('file', 'templates/folder.xml') }}"
-    name: "{{item.name}}"
-    password: "{{APP_KEYS.APP_PASS}}"
-    url: "{{URL}}"
-    user: "{{APP_KEYS.APP_USER}}"
-  loop:
-    - { name: "ci-pipelines"}
-#     - { name: "terraform"}
-
-- name: Include Multi Branch task file
-  ansible.builtin.include_tasks: mbranch.yml
-  loop:
-    - { name: "node-app"}
-    - { name: "java-app"}
+#- name: Create Folders
+#  community.general.jenkins_job:
+#    config: "{{ lookup('file', 'templates/folder.xml') }}"
+#    name: "{{item.name}}"
+#    password: "{{APP_KEYS.APP_PASS}}"
+#    url: "{{URL}}"
+#    user: "{{APP_KEYS.APP_USER}}"
+#  loop:
+#    - { name: "ci-pipelines"}
+##     - { name: "terraform"}
+#
+#- name: Include Multi Branch task file
+#  ansible.builtin.include_tasks: mbranch.yml
+#  loop:
+#    - { name: "node-app"}
+#    - { name: "java-app"}
 
 
 - name: delete secrets
   ansible.builtin.include_tasks: deleteSecrets.yml
 
-- name: create secrets
-  ansible.builtin.include_tasks: secrets.yml
-  loop:
-    - { SECRET_ID: "APP_CREDS"}
-    - { SECRET_ID: "INSTANCE_CREDS"}
+#- name: create secrets
+#  ansible.builtin.include_tasks: secrets.yml
+#  loop:
+#    - { SECRET_ID: "APP_CREDS"}
+#    - { SECRET_ID: "INSTANCE_CREDS"}
 
 # - name: Include Single Branch task file
 #   ansible.builtin.include_tasks: sbranch.yml
