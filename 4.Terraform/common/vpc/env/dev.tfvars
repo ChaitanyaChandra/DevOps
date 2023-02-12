@@ -1,4 +1,4 @@
-TF_VAR_VPC_CIDR            = "10.0.0.0/16"
-TF_VAR_ENV                 = "dev"
-TF_VAR_PUBLIC_SUBNET_CIDR  = ["10.0.0.0/24", "10.0.1.0/24"]
-TF_VAR_PRIVATE_SUBNET_CIDR = ["10.0.100.0/24", "10.0.101.0/24"]
+VPC_CIDR            = "10.0.0.0/16"
+ENV                 = "dev"
+PUBLIC_SUBNET_CIDR  = ["10.0.0.0/24", "10.0.1.0/24"]
+PRIVATE_SUBNET_CIDR = ["10.0.100.0/24", "10.0.101.0/24"]
