@@ -18,9 +18,6 @@
 
 - name: delete secrets
   ansible.builtin.include_tasks: deleteSecrets.yml
-  loop:
-    - { SECRET_ID: "APP_CREDS"}
-    - { SECRET_ID: "INSTANCE_CREDS"}
 
 - name: create secrets
   ansible.builtin.include_tasks: secrets.yml
