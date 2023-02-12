@@ -21,3 +21,7 @@ python3 -m pip install ansible botocore boto3 python-jenkins
 
 #network tools
 yum -y install bind-utils mtr nc nmap traceroute
+
+echo "export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8" >> /etc/profile

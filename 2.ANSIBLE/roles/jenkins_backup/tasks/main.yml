@@ -1,10 +1,9 @@
+- name: create backup dir
+  ansible.builtin.file:
+    path: /apps/
+    state: directory
+
 - name: copy and unarchive the backup file
   ansible.builtin.unarchive:
-    src: backup.tar.gz
-    dest: /tmp
-
-- name: Copy Backup Content
-  ansible.builtin.copy:
-    src: /tmp/var/lib/jenkins/
-    dest: /var/lib/jenkins/
-    remote_src: yes
+    src: backup.zip
+    dest: /apps/jenkins_backup/
