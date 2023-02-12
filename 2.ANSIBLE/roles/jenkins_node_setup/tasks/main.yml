@@ -47,7 +47,11 @@
     dest: /bin/sonar-scanner
     state: link
 
-- name: Select desired Java version
-  shell: echo {{ desired_java_version_number }} | alternatives --config java
-  vars:
-    desired_java_version_number: 2
+- name: Set Java 11 as the default Java implementation
+  command: alternatives --config java
+  register: java_config
+  when: java_config.stdout.find("java-11-openjdk") != -1
+
+- name: Select Java 11
+  command: echo 2 | alternatives --config java
+  when: java_config.stdout.find("java-11-openjdk") != -1
