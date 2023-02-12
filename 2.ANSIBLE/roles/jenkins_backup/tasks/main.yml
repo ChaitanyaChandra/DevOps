@@ -7,3 +7,6 @@
   ansible.builtin.unarchive:
     src: backup.zip
     dest: /apps/jenkins_backup/
+
+- name: change ownership for backup file
+  file: dest=/apps/ owner=jenkins group=jenkins mode=u=rwX,g=rX,o=rX recurse=yes
