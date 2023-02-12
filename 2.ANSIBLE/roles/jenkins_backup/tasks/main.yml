@@ -1,7 +1,7 @@
-#- name: create backup dir
-#  ansible.builtin.file:
-#    path: /apps/
-#    state: directory
+- name: create backup dir
+  ansible.builtin.file:
+    path: /apps/
+    state: directory
 
 - name: copy and unarchive the backup file
   ansible.builtin.unarchive:
