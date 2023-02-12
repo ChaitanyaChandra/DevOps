@@ -34,7 +34,5 @@ EOF
 }
 
 variable "cloudflare_api" {
-  default = <<EOF
-YWlSeHBvM3hvb09lXzVMQU00YmZxOWh5X1NudkZ2eUE0SU80WE5LWgo=
-EOF
+  default = "YWlSeHBvM3hvb09lXzVMQU00YmZxOWh5X1NudkZ2eUE0SU80WE5LWgo="
 }
