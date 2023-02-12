@@ -46,3 +46,8 @@
     src: /opt/sonar/bin/sonar-scanner
     dest: /bin/sonar-scanner
     state: link
+
+- name: Select desired Java version
+  shell: echo {{ desired_java_version_number }} | alternatives --config java
+  vars:
+    desired_java_version_number: 2
