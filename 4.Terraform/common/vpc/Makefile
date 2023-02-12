@@ -1,4 +1,6 @@
-dependencies:
-	cd dependencies/ ; terraform init ; terraform plan ; terraform apply --auto-approve
 dev:
-	terraform init ; terraform plan ; terraform apply --auto-approve
+	terraform init -backend-config=env/dev-backend.tfvars
+	terraform apply -auto-approve -var-file=env/dev.tfvars
+prod:
+	terraform init -backend-config=env/prod-backend.tfvars
+	terraform apply -auto-approve -var-file=env/prod.tfvars

@@ -1,8 +1,5 @@
 # subnet calculator
 # https://www.ipaddressguide.com/cidr
-
-
-
 # data block for az
 data "aws_availability_zones" "az" {
   state = "available"
@@ -114,4 +111,15 @@ resource "aws_nat_gateway" "NATgw_one" {
   tags = merge(tomap({
     "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-nat-gateway"
   }), local.tags)
+}
+
+
+resource "aws_route53_vpc_association_authorization" "auth" {
+  vpc_id  = aws_vpc.vpc.id
+  zone_id = data.terraform_remote_state.remote.outputs.zone_id
+}
+
+resource "aws_route53_zone_association" "example" {
+  vpc_id  = aws_route53_vpc_association_authorization.auth.vpc_id
+  zone_id = aws_route53_vpc_association_authorization.auth.zone_id
 }

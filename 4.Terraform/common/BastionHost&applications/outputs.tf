@@ -22,3 +22,7 @@ output "aws_sg_id" {
 output "aws_subnet_id" {
   value = aws_subnet.public_subnet.id
 }
+
+output "zone_id" {
+  value = aws_route53_zone.dns.zone_id
+}
