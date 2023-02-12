@@ -5,6 +5,6 @@
 
 - name: Copy Backup Content
   ansible.builtin.copy:
-    src: /tmp/var/lib/jenkins
+    src: /tmp/var/lib/jenkins/
     dest: /var/lib/jenkins/
     remote_src: yes
