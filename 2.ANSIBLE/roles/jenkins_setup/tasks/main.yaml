@@ -52,3 +52,7 @@
     - { file: 'jenkins.conf', dest: '/etc/nginx/conf.d/jenkins.conf' }
     - { file: 'nginx.conf', dest: '/etc/nginx/nginx.conf' }
   notify: restart nginx Service
+
+- name: copy backup file
+  ansible.builtin.import_role:
+    name: jenkins_backup
