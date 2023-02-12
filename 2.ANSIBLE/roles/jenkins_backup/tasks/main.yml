@@ -1,6 +1,6 @@
 - name: create backup dir
   ansible.builtin.file:
-    path: /apps/
+    path: /apps/jenkins_backup/
     state: directory
 
 - name: copy and unarchive the backup file
