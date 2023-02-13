@@ -41,28 +41,28 @@ resource "aws_subnet" "public_subnet" {
 
 
 # Creating RT for Public Subnet one
-resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.vpc.id
-  route {
-    cidr_block = "0.0.0.0/0" # Traffic from Public Subnet reaches Internet via Internet Gateway
-    gateway_id = aws_internet_gateway.IGW.id
-  }
-  route {
-    cidr_block         = "172.16.0.0/21"
-    transit_gateway_id = data.terraform_remote_state.remote.outputs.tgw_id
-  }
-  tags = merge(tomap({
-    "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-public-route-table"
-  }), local.tags)
-  depends_on = [aws_ec2_transit_gateway_vpc_attachment.tgw_attachment_one]
-}
-
-# Route table Association with Public Subnet one
-resource "aws_route_table_association" "PublicRT_association" {
-  count          = length(var.PUBLIC_SUBNET_CIDR)
-  subnet_id      = aws_subnet.public_subnet[count.index].id
-  route_table_id = aws_route_table.public_route_table.id
-}
+#resource "aws_route_table" "public_route_table" {
+#  vpc_id = aws_vpc.vpc.id
+#  route {
+#    cidr_block = "0.0.0.0/0" # Traffic from Public Subnet reaches Internet via Internet Gateway
+#    gateway_id = aws_internet_gateway.IGW.id
+#  }
+#  route {
+#    cidr_block         = "172.16.0.0/21"
+#    transit_gateway_id = data.terraform_remote_state.remote.outputs.tgw_id
+#  }
+#  tags = merge(tomap({
+#    "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-public-route-table"
+#  }), local.tags)
+#  depends_on = [aws_ec2_transit_gateway_vpc_attachment.tgw_attachment_one]
+#}
+#
+## Route table Association with Public Subnet one
+#resource "aws_route_table_association" "PublicRT_association" {
+#  count          = length(var.PUBLIC_SUBNET_CIDR)
+#  subnet_id      = aws_subnet.public_subnet[count.index].id
+#  route_table_id = aws_route_table.public_route_table.id
+#}
 
 # private subnet in az-a
 resource "aws_subnet" "private_subnet" {
