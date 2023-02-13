@@ -7,5 +7,5 @@ module "vpc" {
 }
 
 output "az" {
-  value = module.vpc.value
+  value = module.vpc.value[0]
 }
