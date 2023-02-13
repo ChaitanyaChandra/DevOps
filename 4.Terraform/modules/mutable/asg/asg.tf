@@ -16,6 +16,7 @@ resource "aws_launch_template" "launch-template" {
 
   user_data = base64encode(templatefile("${path.module}/templates/code.sh", {
     COMPONENT_ROLE = var.component_role
+    APP_VERSION = var.APP_VERSION
     ENV       = var.ENV
   }))
 }
