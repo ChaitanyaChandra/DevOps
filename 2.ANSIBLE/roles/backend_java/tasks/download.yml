@@ -37,5 +37,5 @@
       become_user: "{{USER}}"
 
     - name: Rename file
-      shell: sudo /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}.jar /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}-1.0-SNAPSHOT.jar
+      shell: sudo mv /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}.jar /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}-1.0-SNAPSHOT.jar
   when: GIT_DOWNLOAD is not defined
