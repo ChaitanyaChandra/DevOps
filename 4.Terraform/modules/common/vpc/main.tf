@@ -125,7 +125,7 @@ resource "aws_route53_vpc_association_authorization" "auth" {
   zone_id = data.terraform_remote_state.remote.outputs.zone_id
 }
 
-resource "aws_route53_zone_association" "example" {
+resource "aws_route53_zone_association" "r53" {
   vpc_id  = aws_route53_vpc_association_authorization.auth.vpc_id
   zone_id = aws_route53_vpc_association_authorization.auth.zone_id
 }
