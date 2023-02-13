@@ -5,3 +5,7 @@ module "vpc" {
   PUBLIC_SUBNET_CIDR = var.PRIVATE_SUBNET_CIDR
   PRIVATE_SUBNET_CIDR = var.PRIVATE_SUBNET_CIDR
 }
+
+output "az" {
+  value = module.vpc.value
+}
