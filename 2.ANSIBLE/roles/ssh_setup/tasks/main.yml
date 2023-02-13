@@ -1,7 +1,10 @@
 - name: remove old dir
   ansible.builtin.file:
-    path: ~/.ssh/
+    path: ~/.ssh/{{item.file}}
     state: absent
+  loop:
+    - { 'file': 'key.pem' }
+    - { 'file': 'config' }
 
 - name: create ssh dir 
   ansible.builtin.file:
