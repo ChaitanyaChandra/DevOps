@@ -69,6 +69,7 @@ resource "aws_subnet" "private_subnet" {
   tags = merge(tomap({
     "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-private-subnet-${count.index}"
   }), local.tags)
+  depends_on = [aws_subnet.public_subnet]
 }
 
 # Creating RT for Private Subnet one
