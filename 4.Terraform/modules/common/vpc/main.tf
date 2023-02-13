@@ -115,8 +115,7 @@ resource "aws_nat_gateway" "NATgw_one" {
     "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-nat-gateway"
   }), local.tags)
   depends_on = [
-    "aws_internet_gateway.IGW",
-    "aws_eip.natIP_one"
+    aws_internet_gateway.IGW, aws_eip.natIP_one
   ]
 }
 
