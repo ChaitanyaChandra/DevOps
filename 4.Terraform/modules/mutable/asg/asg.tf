@@ -3,6 +3,7 @@ resource "aws_launch_template" "launch-template" {
   image_id               = "ami-07acf41a58c76cc08"
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.sg.id]
+  key_name = data.terraform_remote_state.bastian_host_and_apps.outputs.key_name
 
   iam_instance_profile {
     name = aws_iam_instance_profile.instance_profile.name
