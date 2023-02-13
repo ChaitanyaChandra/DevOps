@@ -21,10 +21,9 @@ locals {
 #  default     = "chaitu-dev"
 #  description = "WORKSPACE NAME imported from tfe"
 #}
-variable "env" {}
-variable "instance_type" {}
 variable "min_size" {}
 variable "max_size" {}
 variable "app_port_no" {}
 variable "component_role" {}
 variable "APP_TYPE" {}
+variable "ENV" {}
