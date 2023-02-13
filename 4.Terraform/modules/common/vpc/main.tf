@@ -60,17 +60,27 @@ resource "aws_subnet" "public_subnet" {
 #  route_table_id = aws_route_table.public_route_table.id
 #}
 
+
 # private subnet in az-a
 resource "aws_subnet" "private_subnet" {
   count             = length(var.PRIVATE_SUBNET_CIDR)
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.PRIVATE_SUBNET_CIDR[count.index]
   availability_zone = data.aws_availability_zones.az.names[count.index]
-  tags = merge(tomap({
-    "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-private-subnet-${count.index}"
-  }), local.tags)
   depends_on = [aws_subnet.public_subnet]
 }
+
+## private subnet in az-a
+#resource "aws_subnet" "private_subnet" {
+#  count             = length(var.PRIVATE_SUBNET_CIDR)
+#  vpc_id            = aws_vpc.vpc.id
+#  cidr_block        = var.PRIVATE_SUBNET_CIDR[count.index]
+#  availability_zone = data.aws_availability_zones.az.names[count.index]
+#  tags = merge(tomap({
+#    "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-private-subnet-${count.index}"
+#  }), local.tags)
+#  depends_on = [aws_subnet.public_subnet]
+#}
 
 ## Creating RT for Private Subnet one
 #resource "aws_route_table" "private_route_table_one" {
