@@ -1,7 +1,9 @@
 module "asg" {
   source = "github.com/chaitanyachandra/devops/4.Terraform/modules/mutable/asg"
-  VPC_CIDR = var.VPC_CIDR
+  min_size = var.min_size
+  max_size = var.max_size
+  app_port_no = var.app_port_no
+  component_role = var.component_role
+  APP_TYPE = var.APP_TYPE
   ENV = var.ENV
-  PUBLIC_SUBNET_CIDR = var.PUBLIC_SUBNET_CIDR
-  PRIVATE_SUBNET_CIDR = var.PRIVATE_SUBNET_CIDR
 }
