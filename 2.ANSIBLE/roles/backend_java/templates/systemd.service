@@ -7,6 +7,8 @@ ExecStart=/bin/java -Xms2900m -Xmx3300m -jar /home/{{USER}}/{{COMPONENT}}/{{COMP
 SyslogIdentifier={{COMPONENT}}
 # WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
 Environment="URL={{URL}}"
+Environment="APP_VERSION={{APP_VERSION}}"
+Environment="ENV={{ENV}}"
 # StandardOutput=syslog
 # StandardError=syslog
 

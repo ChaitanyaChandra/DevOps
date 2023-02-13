@@ -1,0 +1,2 @@
+ansible-pull -U https://github.com/ChaitanyaChandra/DevOps.git 2.ANSIBLE/spec.yml -e 'ROLE=backend_nodejs' -e 'HOST=localhost' -e 'ROOT_USER=true' -e 'APP_VERSION=4.0' -e 'GIT_DOWNLOAD=true' -e 'ENV=prod' -c 2.AN
+SIBLE/ansible.cfg -d /tmp/ansible
