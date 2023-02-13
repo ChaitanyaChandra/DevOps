@@ -87,8 +87,8 @@ def artifacts() {
       if (env.APPTYPE == "java") {
         sh '''
           mvn clean package 
-          mv target/status-1.0-SNAPSHOT.jar ${COMPONENT}-1.0-SNAPSHOT.jar 
-          zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}-1.0-SNAPSHOT.jar
+          # mv target/status-1.0-SNAPSHOT.jar ${COMPONENT}-1.0-SNAPSHOT.jar 
+          zip -r ${COMPONENT}-${TAG_NAME}.zip target/status-1.0-SNAPSHOT.jar
         '''
       }      
     }
