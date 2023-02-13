@@ -24,7 +24,7 @@
   block:
     - name: Download nodejs artifacts  from Nexus
       ansible.builtin.get_url:
-        url: http://nexus-dev.chaitu.org:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+        url: http://nexus.chaitu.org:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
         dest: /tmp
         username: "{{APP_KEYS.APP_USER}}"
         password: "{{APP_KEYS.APP_PASS}}"
