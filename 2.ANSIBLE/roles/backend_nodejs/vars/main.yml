@@ -1,6 +1,7 @@
 USER: node
-COMPONENT: nodejs-app
-GIT_DOWNLOAD: yes
+COMPONENT: node-app
+APP_KEYS : "{{lookup('amazon.aws.aws_secret', 'spec/keys', region='us-east-1')}}"
+APP_VERSION : 1.0
 DB_PASS: 123Chaitu
 DB_USER: chaitu
 DB_URL: cluster0.wdtudby.mongodb.net
