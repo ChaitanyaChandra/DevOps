@@ -29,3 +29,7 @@
     enabled: yes
     daemon_reload: yes
   notify: restart Service
+
+- name: import backend java
+  ansible.builtin.import_role:
+    name: backend_java

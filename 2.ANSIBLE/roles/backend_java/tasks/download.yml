@@ -35,4 +35,7 @@
         dest: /home/{{USER}}/{{COMPONENT}}/
         remote_src: yes
       become_user: "{{USER}}"
+
+    - name: Rename file
+      shell: /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}.jar /home/{{USER}}/{{COMPONENT}}/{{COMPONENT}}-1.0-SNAPSHOT.jar
   when: GIT_DOWNLOAD is not defined
