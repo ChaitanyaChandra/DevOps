@@ -1,7 +1,7 @@
 dev:
 	rm -rf .terraform
 	terraform init -backend-config=env/dev-backend.tfvars
-	TERRAFORM plan
+	terraform plan
 	terraform apply -auto-approve -var-file=env/dev.tfvars
 prod:
 	rm -rf .terraform
