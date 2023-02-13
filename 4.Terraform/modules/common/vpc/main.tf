@@ -27,17 +27,17 @@ output "value" {
   value = data.aws_availability_zones.az.names
 }
 
-## public subnet az-a
-#resource "aws_subnet" "public_subnet" {
-#  count                   = length(var.PUBLIC_SUBNET_CIDR)
-#  vpc_id                  = aws_vpc.vpc.id
-#  cidr_block              = var.PUBLIC_SUBNET_CIDR[count.index]
-#  map_public_ip_on_launch = true
-#  availability_zone       = data.aws_availability_zones.az.names[count.index]
-#  tags = merge(tomap({
-#    "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-public-subnet-${count.index}"
-#  }), local.tags)
-#}
+# public subnet az-a
+resource "aws_subnet" "public_subnet" {
+  count                   = length(var.PUBLIC_SUBNET_CIDR)
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.PUBLIC_SUBNET_CIDR[count.index]
+  map_public_ip_on_launch = true
+  availability_zone       = data.aws_availability_zones.az.names[count.index]
+  tags = merge(tomap({
+    "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-public-subnet-${count.index}"
+  }), local.tags)
+}
 #
 #
 ## Creating RT for Public Subnet one
