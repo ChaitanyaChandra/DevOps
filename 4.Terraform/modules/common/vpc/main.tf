@@ -85,7 +85,7 @@ resource "aws_route_table" "private_route_table_one" {
   tags = merge(tomap({
     "Name" = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-private-route-table"
   }), local.tags)
-  depends_on = [aws_ec2_transit_gateway_vpc_attachment.tgw_attachment_one]
+  depends_on = [aws_ec2_transit_gateway_vpc_attachment.tgw_attachment_one, aws_subnet.private_subnet]
 }
 
 # Route table Association with Private Subnets one
