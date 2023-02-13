@@ -79,7 +79,7 @@ def artifacts() {
       if (env.APPTYPE == "nodejs") {
         sh '''
           npm install 
-          zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules index.js 
+          zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules index.js views public model
         '''
       }
 
