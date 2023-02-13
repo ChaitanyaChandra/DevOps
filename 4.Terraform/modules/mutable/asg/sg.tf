@@ -9,7 +9,8 @@ resource "aws_security_group" "sg" {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
-    security_groups = [data.terraform_remote_state.bastian_host_and_apps.outputs.aws_sg_id]
+    cidr_blocks = [data.terraform_remote_state.remote_vpc.outputs.vpc_cidr]
+#     security_groups = [data.terraform_remote_state.bastian_host_and_apps.outputs.aws_sg_id]  # apps was in different vpc
   }
 
   ingress {
