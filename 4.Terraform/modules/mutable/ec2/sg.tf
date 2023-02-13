@@ -1,14 +1,15 @@
 resource "aws_security_group" "sg" {
-  name        = "${var.env}-${var.name}-ec2.sg"
-  description = "${var.env}-${var.name}-ec2.sg"
-  vpc_id      = var.vpc_id
+  name        = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2.sg"
+  description = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2.sg"
+  vpc_id      = data.terraform_remote_state.remote_vpc.outputs.vpc_id
+
 
   ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.BASTION_NODE]
+    description     = "allow all for bastian host and other CICD applications"
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    security_groups = [data.terraform_remote_state.bastian_host_and_apps.outputs.aws_sg_id]
   }
 
   ingress {
@@ -16,7 +17,7 @@ resource "aws_security_group" "sg" {
     from_port   = var.app_port_no
     to_port     = var.app_port_no
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr]
+    cidr_blocks = [data.terraform_remote_state.remote_vpc.outputs.vpc_cidr]
   }
 
   egress {
@@ -28,6 +29,6 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "${var.env}-${var.name}-ec2.sg"
+    Name = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2.sg"
   }
 }
