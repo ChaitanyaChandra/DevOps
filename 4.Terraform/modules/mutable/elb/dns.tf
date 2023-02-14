@@ -7,7 +7,7 @@ resource "cloudflare_record" "record" {
   zone_id = data.cloudflare_zone.zone.id
   name    = "app"
   value   = aws_lb.main.dns_name
-  type    = "A"
+  type    = "CNAME"
   ttl     = 1
   proxied = true
 }
@@ -27,7 +27,7 @@ provider "cloudflare" {
 resource "aws_route53_record" "route" {
   zone_id = data.terraform_remote_state.bastian_host_and_apps.outputs.zone_id
   name    = var.internal ? "backend" : "app"
-  type    = "A"
+  type    = "CNAME"
   ttl     = 60
   records = [aws_lb.main.dns_name]
 }
