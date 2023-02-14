@@ -19,6 +19,12 @@
     path: /etc/datadog-agent/conf.d/custom_{{ APP_NAME }}.d
     state: directory
 
+- name: Creates file if not present
+  ansible.builtin.file:
+    path: "{{ LOG_FILE }}"
+    state: present
+  notify: restart rsyslog Service
+
 - name: log file permissions for datadog.
   ansible.builtin.shell: |
       sudo chown -R dd-agent:dd-agent {{ LOG_FILE }}

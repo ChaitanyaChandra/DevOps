@@ -2,3 +2,8 @@
   ansible.builtin.systemd:
     name: datadog-agent
     state: restarted
+
+- name: restart rsyslog Service
+  ansible.builtin.systemd:
+    name: rsyslog
+    state: restarted
