@@ -2,7 +2,7 @@ locals {
   #  env         = trimprefix("${var.TFC_WORKSPACE_NAME}", "chaitu-")
   env         = var.ENV
   remove_vpc_key = "state/${var.ENV}/vpc-terraform.tfstate"
-  type = var.internal ? private : public
+  type = var.internal ? "private" : "public"
 
   Environment = local.env == "dr" || local.env == "prod" ? "prod" : "nonpord"
   region = "us-east-1"
