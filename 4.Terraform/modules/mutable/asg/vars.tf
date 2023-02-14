@@ -29,7 +29,9 @@ variable "component_role" {}
 variable "component" {}
 variable "APP_TYPE" {}
 variable "ENV" {}
-variable "APP_VERSION" {}
+variable "APP_VERSION" {
+  type = string
+}
 variable "lb_arn" {}
 variable "ROLE_AUGMENTS" {
   default = " "
