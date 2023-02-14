@@ -1,2 +1,2 @@
-proxy_host: backend.chaitu.net # localhost:8080
+proxy_host: localhost:8080
 COMPONENT: frontend
