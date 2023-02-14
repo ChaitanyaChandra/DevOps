@@ -3,7 +3,11 @@
     name: datadog-agent
     state: restarted
 
-- name: restart rsyslog Service
-  ansible.builtin.systemd:
-    name: rsyslog
+- name: restart Services
+  systemd:
+    name: "{{ item.service }}"
     state: restarted
+  ignore_errors: yes
+  loop:
+    - { service: 'rsyslog' }
+    - { service: 'nginx' }

@@ -23,7 +23,7 @@
   ansible.builtin.shell: |
       sudo rm -rf {{ LOG_FILE }}; touch {{ LOG_FILE }}; sudo chown -R dd-agent:dd-agent {{ LOG_FILE }}
   ignore_errors: yes
-  notify: restart rsyslog Service
+  notify: restart Services
 
 - name: place integration files
   ansible.builtin.template: src='conf.yml' dest='/etc/datadog-agent/conf.d/custom_{{ APP_NAME }}.d/conf.yml'
