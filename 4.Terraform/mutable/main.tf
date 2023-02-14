@@ -6,6 +6,7 @@ module "nodejs" {
   component_role = "backend_nodejs"
   APP_TYPE = "backend"
   ENV = var.ENV
+  APP_VERSION = var.APP_VERSION
 }
 
 module "nginx" {
@@ -16,4 +17,5 @@ module "nginx" {
   component_role = "frontend"
   APP_TYPE = "frontend"
   ENV = var.ENV
+  APP_VERSION = var.APP_VERSION
 }
