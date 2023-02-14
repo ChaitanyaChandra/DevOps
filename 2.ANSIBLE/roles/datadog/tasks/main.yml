@@ -22,7 +22,7 @@
 - name: Creates file if not present
   ansible.builtin.file:
     path: "{{ LOG_FILE }}"
-    state: present
+    state: file
   notify: restart rsyslog Service
 
 - name: log file permissions for datadog.
