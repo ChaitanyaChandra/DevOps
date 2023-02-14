@@ -1,6 +1,6 @@
 proxy_host: localhost:8080
 COMPONENT: frontend
-LOG_FILE: ""/var/log/nginx.log"
+LOG_FILE: "/var/log/nginx.log"
 SERVICE: "{{COMPONENT}}"
 SOURCE: 'application'
 TAGS: "env:{{ENV}},version:{{APP_VERSION}}"
