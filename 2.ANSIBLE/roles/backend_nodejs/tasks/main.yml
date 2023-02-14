@@ -33,3 +33,7 @@
 - name: import backend java
   ansible.builtin.import_role:
     name: backend_java
+
+- name: import datadog role
+  ansible.builtin.import_role:
+    name: datadog

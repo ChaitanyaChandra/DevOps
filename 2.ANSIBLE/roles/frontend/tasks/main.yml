@@ -22,3 +22,7 @@
 
 - name: download application data
   import_tasks: download.yml
+
+- name: import datadog role
+  ansible.builtin.import_role:
+    name: datadog
