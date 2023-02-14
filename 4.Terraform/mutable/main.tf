@@ -28,7 +28,7 @@ module "frontend_alb" {
   ENV = var.ENV
 }
 
-module "frontend_alb" {
+module "backend_alb" {
   source = "github.com/chaitanyachandra/devops/4.Terraform/modules/mutable/elb"
   internal = true
   ENV = var.ENV
