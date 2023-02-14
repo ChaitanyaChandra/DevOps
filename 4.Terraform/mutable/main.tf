@@ -3,6 +3,7 @@ module "nodejs" {
   min_size = var.min_size
   max_size = var.max_size
   app_port_no = 8080
+  component   = "nodejs"
   component_role = "backend_nodejs"
   APP_TYPE = "backend"
   ENV = var.ENV
@@ -14,6 +15,7 @@ module "nginx" {
   min_size = var.min_size
   max_size = var.max_size
   app_port_no = 80
+  component   = "nginx"
   component_role = "frontend"
   APP_TYPE = "frontend"
   ENV = var.ENV
