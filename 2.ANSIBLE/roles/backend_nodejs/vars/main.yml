@@ -7,6 +7,7 @@ DB_PASS: 123Chaitu
 DB_USER: chaitu
 DB_URL: cluster0.wdtudby.mongodb.net
 LOG_FILE: '/var/log/{{COMPONENT}}.log'
+APP_NAME: '{{COMPONENT}}'
 SERVICE: '{{COMPONENT}}'
 SOURCE: 'application'
 TAGS: "env:{{ENV}},version:{{APP_VERSION}}"
