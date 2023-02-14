@@ -22,7 +22,7 @@
 - name: log file permissions for datadog.
   ansible.builtin.shell: |
       sudo chown -R dd-agent:dd-agent {{ LOG_FILE }}
-  ignore_errors:true
+  ignore_errors: yes
 
 - name: place integration files
   ansible.builtin.template: src='conf.yml' dest='/etc/datadog-agent/conf.d/custom_{{ APP_NAME }}.d/conf.yml'
