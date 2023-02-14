@@ -8,6 +8,7 @@ module "nodejs" {
   APP_TYPE = "backend"
   ENV = var.ENV
   APP_VERSION = var.APP_VERSION
+  lb_arn = module.backend_alb.lb_arn
 }
 
 module "nginx" {
@@ -20,6 +21,7 @@ module "nginx" {
   APP_TYPE = "frontend"
   ENV = var.ENV
   APP_VERSION = var.APP_VERSION
+  lb_arn = module.frontend_alb.lb_arn
 }
 
 module "frontend_alb" {

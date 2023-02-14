@@ -30,3 +30,4 @@ variable "component" {}
 variable "APP_TYPE" {}
 variable "ENV" {}
 variable "APP_VERSION" {}
+variable "lb_arn" {}
