@@ -31,3 +31,6 @@ variable "APP_TYPE" {}
 variable "ENV" {}
 variable "APP_VERSION" {}
 variable "lb_arn" {}
+variable "ROLE_AUGMENTS" {
+  default = " "
+}

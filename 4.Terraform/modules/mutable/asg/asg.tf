@@ -18,6 +18,7 @@ resource "aws_launch_template" "launch-template" {
     COMPONENT_ROLE = var.component_role
     APP_VERSION = var.APP_VERSION
     ENV       = var.ENV
+    ROLE_AUGMENTS = var.ROLE_AUGMENTS
   }))
 }
 

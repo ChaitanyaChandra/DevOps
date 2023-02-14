@@ -19,6 +19,7 @@ module "nginx" {
   component   = "nginx"
   component_role = "frontend"
   APP_TYPE = "frontend"
+  ROLE_AUGMENTS = "-e 'proxy_host=backend.chaitu.net'"
   ENV = var.ENV
   APP_VERSION = var.APP_VERSION
   lb_arn = module.frontend_alb.lb_arn
