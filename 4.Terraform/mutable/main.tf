@@ -21,3 +21,15 @@ module "nginx" {
   ENV = var.ENV
   APP_VERSION = var.APP_VERSION
 }
+
+module "frontend_alb" {
+  source = "github.com/chaitanyachandra/devops/4.Terraform/modules/mutable/elb"
+  internal = false
+  ENV = var.ENV
+}
+
+module "frontend_alb" {
+  source = "github.com/chaitanyachandra/devops/4.Terraform/modules/mutable/elb"
+  internal = true
+  ENV = var.ENV
+}
