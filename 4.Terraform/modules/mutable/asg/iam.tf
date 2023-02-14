@@ -1,7 +1,7 @@
 resource "aws_iam_policy" "policy" {
-  name        = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-secrets-readonly-policy"
+  name        = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-secrets-readonly-policy"
   path        = "/"
-  description = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-secrets-readonly-policy"
+  description = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-secrets-readonly-policy"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -23,7 +23,7 @@ resource "aws_iam_policy" "policy" {
 }
 
 resource "aws_iam_role" "role" {
-  name = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-secrets-readonly-role"
+  name = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-secrets-readonly-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -40,7 +40,7 @@ resource "aws_iam_role" "role" {
   })
 
   tags = {
-    tag-key = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-secrets-readonly-role"
+    tag-key = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-secrets-readonly-role"
   }
 }
 
@@ -50,6 +50,6 @@ resource "aws_iam_role_policy_attachment" "policy-to-role-attach" {
 }
 
 resource "aws_iam_instance_profile" "instance_profile" {
-  name = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-secrets-readonly-role"
+  name = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-secrets-readonly-role"
   role = aws_iam_role.role.name
 }

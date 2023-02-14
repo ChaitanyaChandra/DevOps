@@ -1,5 +1,5 @@
 resource "aws_launch_template" "launch-template" {
-  name                   = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-lt"
+  name                   = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-lt"
   image_id               = "ami-07acf41a58c76cc08"
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.sg.id]
@@ -23,7 +23,7 @@ resource "aws_launch_template" "launch-template" {
 
 
 resource "aws_autoscaling_group" "asg" {
-  name                = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-asg"
+  name                = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-asg"
   desired_capacity    = var.min_size
   max_size            = var.max_size
   min_size            = var.min_size
@@ -37,7 +37,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2"
+    value               = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-ec2"
     propagate_at_launch = true
   }
 }

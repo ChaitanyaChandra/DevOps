@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "main" {
-  name     = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-tg"
+  name     = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-tg"
   port     = var.app_port_no
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.remote_vpc.outputs.vpc_id

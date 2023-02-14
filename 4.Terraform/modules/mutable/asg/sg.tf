@@ -1,6 +1,6 @@
 resource "aws_security_group" "sg" {
-  name        = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2.sg"
-  description = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2.sg"
+  name        = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-ec2.sg"
+  description = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-ec2.sg"
   vpc_id      = data.terraform_remote_state.remote_vpc.outputs.vpc_id
 
 
@@ -30,6 +30,6 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "${local.tags.Service}-${local.Environment}-${local.env_tag.appenv}-ec2.sg"
+    Name = "${local.tags.Service}-${local.Environment}-${var.component_role}-${local.env_tag.appenv}-ec2.sg"
   }
 }
