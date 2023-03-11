@@ -31,6 +31,6 @@ source /etc/bash_completion.d/kubectl.completion
 
 # show kubeadm join ...
 echo "* Join nodes with:"
-grep -o "kubeadm.*join.*" ~/kubeadm-init.log
+grep -A 1 'kubeadm join' kubeadm-init.log
 # (master shouldn't join
 # kubeadm join --token $(kubeadm token list |sed -n 2p|egrep -o '^\S+') $(sed -rn s,.*server:.*//,,p /etc/kubernetes/admin.conf)
