@@ -3,6 +3,6 @@ kind: Pod          # api object kind
 metadata:
   name: spec-pod  # name of the pod
 spec:
-containers:
-  - name: spec-container
-    image: chaituchowdary/app
+  containers:
+    - name: spec-container
+      image: chaituchowdary/app
