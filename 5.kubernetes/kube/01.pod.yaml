@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: spec-container
-      image: chaituchowdary/app
+      image: chaituchowdary/node-app
