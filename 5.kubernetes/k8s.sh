@@ -15,13 +15,13 @@ kubeadm init --apiserver-advertise-address $(hostname -i) | tee ~/kubeadm-init.l
 # apply weave cni
 kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 -w0)"
 # apply dashboard
-curl -L -s https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml | sed 's/targetPort: 8443/targetPort: 8443\n  type: LoadBalancer/' | kubectl apply -f -
+# curl -L -s https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml | sed 's/targetPort: 8443/targetPort: 8443\n  type: LoadBalancer/' | kubectl apply -f -
 # add Google's 8.8.8.8 dns
 kubectl get deployment --namespace=kube-system kube-dns -oyaml|sed -r 's,(.*--server)=(/ip6.arpa/.*),&\n\1=8.8.8.8,'|kubectl apply -f -
 # add service account to dashboard, from https://gist.github.com/figaw/17dc8ed72c8d2fe1a12682beb9c1e57e
 # this gives anyone with access to the dashboard the cluster-admin role.. so.. clearly this is for development.
-kubectl create -f https://gist.githubusercontent.com/figaw/17dc8ed72c8d2fe1a12682beb9c1e57e/raw/e2c472cab2aa2ffb410999bcdbd158aa7617d9a3/service-account.yaml
-)
+#kubectl create -f https://gist.githubusercontent.com/figaw/17dc8ed72c8d2fe1a12682beb9c1e57e/raw/e2c472cab2aa2ffb410999bcdbd158aa7617d9a3/service-account.yaml
+#)
 
 # k8s comfy'ness (add emacs)
 cd
