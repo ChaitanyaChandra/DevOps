@@ -1,0 +1,8 @@
+apiVersion: v1     # api object apiversion
+kind: Pod          # api object kind
+metadata:
+  name: spec-pod  # name of the pod
+spec:
+containers:
+  - name: spec-container
+    image: chaituchowdary/app
