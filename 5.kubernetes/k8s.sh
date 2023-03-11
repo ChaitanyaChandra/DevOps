@@ -11,9 +11,11 @@
 # Initialize cluster and FIXUP some play-with-k8s annoyances (fixed kube-dashboard shortlink, update port-number)
 test -d /etc/kubernetes/pki || (
 # run kubeadm
-kubeadm init --apiserver-advertise-address $(hostname -i) | tee ~/kubeadm-init.log
+# kubeadm init --apiserver-advertise-address $(hostname -i) | tee ~/kubeadm-init.log
+kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16 | tee ~/kubeadm-init.log
+kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
 # apply weave cni
-kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 -w0)"
+# kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 -w0)"
 # apply dashboard
 # curl -L -s https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml | sed 's/targetPort: 8443/targetPort: 8443\n  type: LoadBalancer/' | kubectl apply -f -
 # add Google's 8.8.8.8 dns
