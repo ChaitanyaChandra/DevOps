@@ -13,6 +13,7 @@ metadata:
   namespace: chandra
   labels:
     app: spec-label        # label for service selector
+    env: dev
 spec:
   replicas: 2
   selector:
@@ -22,6 +23,7 @@ spec:
     metadata:
       labels:
         app: node-app     # label for deployment selector
+        env: dev
     spec:
       containers:
         - image: chaituchowdary/node-app
@@ -33,11 +35,13 @@ kind: Service
 metadata:
   name: spce-service
   namespace: chandra
+  labels:
+    env : dev
 spec:
   selector:
     app: spec-label
   ports:
   - name: spec-svc-port     # name-of-service-port
     protocol: TCP
-    port: 80
-    targetPort: 8080
+    port: 80                # port of host
+    targetPort: 8080        # port of the pod/application
