@@ -20,4 +20,4 @@ spec:
       mountPath: /usr/share/nginx/html           # default dir of nginx reads
   volumes:
   - name: webcontent 
-    emptyDir: {}           # volume time, data written on node 
+    emptyDir: {}           # volume typee, data written on node
