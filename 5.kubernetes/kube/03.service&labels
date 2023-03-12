@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chandra
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spec-deployment     # name of the deployment
+  namespace: chandra
+  labels:
+    app: spec-label        # label for service selector
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app        # match label of container in template
+  template:
+    metadata:
+      labels:
+        app: node-app     # label for deployment selector
+    spec:
+      containers:
+        - image: chaituchowdary/node-app
+          name: node-app
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spce-service
+  namespace: chandra
+spec:
+  selector:
+    app: spec-label
+  ports:
+  - name: app_on_8080
+    protocol: TCP
+    port: 80
+    targetPort: 8080
