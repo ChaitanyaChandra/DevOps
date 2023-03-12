@@ -37,7 +37,7 @@ spec:
   selector:
     app: spec-label
   ports:
-  - name: app_on_8080
+  - name: spec-svc-port     # name-of-service-port
     protocol: TCP
     port: 80
     targetPort: 8080
